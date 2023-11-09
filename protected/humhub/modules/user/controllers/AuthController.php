@@ -100,6 +100,7 @@ class AuthController extends Controller
     public function actionLogin()
     {
         // If user is already logged in, redirect him to the dashboard
+        $invite->getInviteLink(true);
         if (!Yii::$app->user->isGuest) {
             return $this->goBack();
         }
@@ -212,6 +213,7 @@ class AuthController extends Controller
 
         if (!empty($attributes['email']) && $linkRegistrationService->isValid()) {
             $linkRegistrationService->convertToInvite($attributes['email']);
+            
         }
 
         // Try automatic user creation
