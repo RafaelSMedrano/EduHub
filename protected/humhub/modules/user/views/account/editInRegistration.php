@@ -2,6 +2,7 @@
 
 use humhub\modules\user\models\forms\Registration;
 use humhub\widgets\SiteLogo;
+use humhub\compat\HForm;
 use yii\bootstrap\ActiveForm;
 use humhub\modules\user\widgets\AuthChoice;
 use humhub\libs\Html;
@@ -11,7 +12,7 @@ use humhub\libs\Html;
  * @var $showAuthClients bool
  */
 
-$this->pageTitle = Yii::t('UserModule.auth', 'Create Account');
+$this->pageTitle = Yii::t('UserModule.auth', 'Create Your EduHub profile');
 ?>
 
 <div class="container" style="text-align: center;">
@@ -26,9 +27,7 @@ $this->pageTitle = Yii::t('UserModule.auth', 'Create Account');
             <div class="panel-body">
 
                 
-                <?php if ($showAuthClients): ?>
-                    <?= AuthChoice::widget() ?>
-                <?php endif; ?>
+                
 
                 <?php $this->beginContent('@user/views/account/_userProfileLayout.php') ?>
                     <div class="help-block">
