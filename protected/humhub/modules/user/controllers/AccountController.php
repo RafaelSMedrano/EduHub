@@ -36,7 +36,7 @@ class AccountController extends BaseAccountController
      * @inheritdoc
      */
     protected $doNotInterceptActionIds = ['delete'];
-    protected $layout = @humhub/views/layouts/profileRegistrationLayout;
+    public $layout = "@humhub/modules/user/view/layout/profileRegistrationLayout";
     
     /**
      * @inheritdoc
