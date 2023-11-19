@@ -119,7 +119,7 @@ class AccountController extends BaseAccountController
 
         $form = new HForm($definition, $user->profile);
         $form->showErrorSummary = true;
-        $layout = "@humhub/modules/user/views/layouts/profileRegistrationLayout";
+        $layout = '@humhub/modules/user/views/layouts/main';
         
         if ($form->submitted('save') && $form->validate() && $form->save()) {
             // Trigger search refresh
