@@ -3,7 +3,8 @@
 use humhub\modules\user\models\forms\Registration;
 use humhub\widgets\SiteLogo;
 use humhub\compat\HForm;
-use yii\bootstrap\ActiveForm;
+//use yii\bootstrap\ActiveForm;
+use humhub\modules\ui\form\widgets\ActiveForm;
 use humhub\modules\user\widgets\AuthChoice;
 use humhub\libs\Html;
 
