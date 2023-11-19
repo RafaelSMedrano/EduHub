@@ -1,0 +1,18 @@
+a:2:{i:0;s:898:"
+
+
+    <div class="media">
+                    <!-- Show user image -->
+            <span class="pull-left has-online-status img-size-medium"><img class="media-object img-rounded" src="/uploads/profile_image/036c3afd-8766-4a58-9071-229825ca2044.jpg?m=1698223360" width="32" alt="Imagem de perfil de Rafael Medrano" style="width: 32px; height: 32px" data-contentcontainer-id="1"><span class="tt user-online-status user-is-online" title="Online"></span></span>        
+        <!-- Show space image, if you are outside from a space -->
+        
+        <div class="media-body text-break">
+
+            <!-- Show content -->
+            <strong>Rafael Medrano</strong> criou este espaço.            <br>
+
+            <!-- show time -->
+            <time class="tt time timeago" datetime="2023-11-04T21:42:04+00:00" title="4 de nov. de 2023 - 18:42">4 de nov. de 2023</time>        </div>
+    </div>
+
+";i:1;N;}

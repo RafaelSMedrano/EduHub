@@ -38,6 +38,7 @@ class AccountController extends BaseAccountController
     protected $doNotInterceptActionIds = ['delete'];
     public $layout = "@humhub/modules/user/views/layouts/profileRegistrationLayout";
     
+    
     /**
      * @inheritdoc
      */
@@ -93,6 +94,7 @@ class AccountController extends BaseAccountController
 
         $form = new HForm($definition, $user->profile);
         $form->showErrorSummary = true;
+        $accountStatus = 'registered';
         if ($form->submitted('save') && $form->validate() && $form->save()) {
             // Trigger search refresh
             $user->save();
@@ -101,7 +103,7 @@ class AccountController extends BaseAccountController
             return $this->redirect(['edit']);
         }
 
-        return $this->render('edit', ['hForm' => $form]);
+        return $this->render('edit', ['hForm' => $form, 'accountStatus' => $accountStatus,]);
     }
     public function actionEditInRegistration() {
         $user = Yii::$app->user->getIdentity();
@@ -119,8 +121,8 @@ class AccountController extends BaseAccountController
 
         $form = new HForm($definition, $user->profile);
         $form->showErrorSummary = true;
-        $layout = '@humhub/modules/user/views/layouts/main';
-        
+        $layout = '@humhub/modules/user/views/layouts/profileRegistrationLayout';
+        $accountStatus = 'register';
         if ($form->submitted('save') && $form->validate() && $form->save()) {
             // Trigger search refresh
             $user->save();
@@ -130,7 +132,7 @@ class AccountController extends BaseAccountController
             return $this->redirect(['edit-in-registration']);
         }
         
-        return $this->render('editInRegistration', ['hForm' => $form, 'layout' => $layout]);
+        return $this->render('editInRegistration', ['hForm' => $form, 'layout' => $layout, 'accountStatus' => $accountStatus,]);
     }    
     /**
      * Change Account

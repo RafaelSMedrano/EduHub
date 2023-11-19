@@ -25,9 +25,7 @@ $this->pageTitle = Yii::t('UserModule.auth', 'Create Your EduHub profile');
             <div class="panel-heading">
                 <?= Yii::t('UserModule.auth', '<strong>Account</strong> registration') ?>
             </div>
-            <div class="panel-body">
-
-                
+            <div class="panel-body">               
                 
 
                 
