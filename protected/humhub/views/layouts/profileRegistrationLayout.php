@@ -15,13 +15,8 @@
         <?= $this->render('head'); ?>
     </head>
     <body>
-        <?php $this->beginBody() ?>
-            oi?
-
-        <!-- end: second top navigation bar -->
-
+        <?php $this->beginBody('@humhub/protected/humhub/views/layouts/profileRegistrationLayout.php') ?>  
         <?= $content; ?>
-
         <?php $this->endBody() ?>
     </body>
 </html>

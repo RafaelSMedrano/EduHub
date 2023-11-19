@@ -36,7 +36,7 @@ class AccountController extends BaseAccountController
      * @inheritdoc
      */
     protected $doNotInterceptActionIds = ['delete'];
-    public $layout = "@humhub/modules/user/view/layout/profileRegistrationLayout";
+    public $layout = "@humhub/modules/user/views/layouts/profileRegistrationLayout";
     
     /**
      * @inheritdoc
@@ -119,7 +119,8 @@ class AccountController extends BaseAccountController
 
         $form = new HForm($definition, $user->profile);
         $form->showErrorSummary = true;
-        $layout = "@humhub/modules/user/views/layouts/main";
+        $layout = "@humhub/modules/user/views/layouts/profileRegistrationLayout";
+        
         if ($form->submitted('save') && $form->validate() && $form->save()) {
             // Trigger search refresh
             $user->save();
