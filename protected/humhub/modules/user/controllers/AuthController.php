@@ -100,7 +100,7 @@ class AuthController extends Controller
     public function actionLogin()
     {
         // If user is already logged in, redirect him to the dashboard
-        $invite->getInviteLink(true);
+        
         if (!Yii::$app->user->isGuest) {
             return $this->goBack();
         }
@@ -113,12 +113,17 @@ class AuthController extends Controller
 
         // Self Invite
         $invite = new Invite();
+        
         $invite->scenario = 'invite';
+        
         if ($invite->load(Yii::$app->request->post()) && $invite->selfInvite()) {
             if (Yii::$app->request->isAjax) {
                 return $this->renderAjax('register_success_modal', ['model' => $invite]);
             } else {
-                return $this->render('register_success', ['model' => $invite]);
+                $this->redirect(['/user/registration', 'token' => $invite->token]);
+                return $this->render('debug');
+                //return $this->render('register_success', ['model' => $invite]);
+                
             }
         }
 
@@ -212,7 +217,10 @@ class AuthController extends Controller
         }
 
         if (!empty($attributes['email']) && $linkRegistrationService->isValid()) {
-            $linkRegistrationService->convertToInvite($attributes['email']);
+            
+            
+            $linkRegistrationService->convertToInvite($attributes['email']); 
+                      
             
         }
 

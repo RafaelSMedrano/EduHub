@@ -102,7 +102,32 @@ class AccountController extends BaseAccountController
 
         return $this->render('edit', ['hForm' => $form]);
     }
+    public function actionEditInRegistration() {
+        $user = Yii::$app->user->getIdentity();
+        $user->profile->scenario = 'editProfile';
 
+        // Get Form Definition
+        $definition = $user->profile->getFormDefinition();
+        $definition['buttons'] = [
+            'save' => [
+                'type' => 'submit',
+                'label' => Yii::t('UserModule.account', 'Save profile'),
+                'class' => 'btn btn-primary'
+            ],
+        ];
+
+        $form = new HForm($definition, $user->profile);
+        $form->showErrorSummary = true;
+        if ($form->submitted('save') && $form->validate() && $form->save()) {
+            // Trigger search refresh
+            $user->save();
+
+            $this->view->saved();
+            return $this->redirect(['edit-in-registration']);
+        }
+
+        return $this->render('editInRegistration', ['hForm' => $form]);
+    }    
     /**
      * Change Account
      *

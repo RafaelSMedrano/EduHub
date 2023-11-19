@@ -47,6 +47,15 @@ use yii\base\Exception;
  * @property string $url_myspace
  * @property string $url_googleplus
  * @property string $url_twitter
+ * 
+ * @property string $profile_category
+ * @property string $entrepreneurial_journey_estage
+ * @property string $work_personality
+ * @property string $businesses_interests_type
+ * @property string $Entrepreneurship_Topics_Interests
+ * @property string $Market_Interests
+ * @property string $Tecnology_Interests
+
  * @property User $user
  */
 class Profile extends ActiveRecord
@@ -171,6 +180,15 @@ class Profile extends ActiveRecord
         Yii::t('UserModule.profile', 'TikTok URL');
         Yii::t('UserModule.profile', 'Instagram URL');
         Yii::t('UserModule.profile', 'Twitter URL');
+
+        Yii::t('UserModule.profile', 'Profile Category');
+        Yii::t('UserModule.profile', 'Entrepreneurial Journey Estage');
+        Yii::t('UserModule.profile', 'Work Personality');
+        Yii::t('UserModule.profile', 'Businesses Interests Type');
+        Yii::t('UserModule.profile', 'Entrepreneurship Topics Interests');
+        Yii::t('UserModule.profile', 'Market Interests');
+        Yii::t('UserModule.profile', 'Technology Interests');
+
     }
 
     /**
@@ -221,9 +239,9 @@ class Profile extends ActiveRecord
             ];
 
             foreach (
-                ProfileField::find()->orderBy('sort_order')
-                    ->where(['profile_field_category_id' => $profileFieldCategory->id])->all() as $profileField
-            ) {
+                ProfileField::find()->orderBy('sort_order')->where(['profile_field_category_id' => $profileFieldCategory->id])->all() as $profileField
+         ) 
+         {
                 /** @var ProfileField $profileField */
                 $profileField->editable = true;
 

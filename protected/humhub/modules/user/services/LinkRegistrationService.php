@@ -106,7 +106,7 @@ final class LinkRegistrationService
         ]);
         $invite->skipCaptchaValidation = true;
         $invite->source = Invite::SOURCE_INVITE_BY_LINK;
-        $invite->getInviteLink(true);
+        
 
         
         if ($this->space) {

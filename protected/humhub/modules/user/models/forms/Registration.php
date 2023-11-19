@@ -17,6 +17,7 @@ use humhub\modules\user\models\User;
 use humhub\modules\user\services\AuthClientUserService;
 use Yii;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Url;
 
 /**
  * Description of Registration
@@ -110,7 +111,8 @@ class Registration extends HForm
             'save' => [
                 'type' => 'submit',
                 'class' => 'btn btn-primary',
-                'label' => Yii::t('UserModule.auth', 'Create account'),
+                'label' => Yii::t('UserModule.auth', 'Create account'), 
+                'url' => Url::to(['account/edit']),               
             ],
         ];
     }

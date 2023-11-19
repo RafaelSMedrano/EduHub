@@ -109,7 +109,7 @@ class RegistrationController extends Controller
                 if (Yii::$app->request->getIsAjax()) {
                     return $this->htmlRedirect(Yii::$app->user->returnUrl);
                 }
-                return $this->redirect(Yii::$app->user->returnUrl);
+                return $this->redirect(['account/edit-in-registration']);
             }
 
             return $this->render('success', [
@@ -152,6 +152,7 @@ class RegistrationController extends Controller
         if ($form->load(Yii::$app->request->post()) && $form->validate()) {
             $invite = $linkRegistrationService->convertToInvite($form->email);
             $invite->sendInviteMail();
+            //return $this->render('@user/views/registration/byLink', ['model' => $invite]);
             return $this->render('@user/views/auth/register_success', ['model' => $invite]);
         }
 

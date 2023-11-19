@@ -36,6 +36,7 @@ $this->pageTitle = Yii::t('UserModule.auth', 'Create Account');
                 <?php endif; ?>
 
                 <?php $form = ActiveForm::begin(['id' => 'registration-form']); ?>
+
                 <?= $form->field($invite, 'email')->input('email', ['id' => 'register-email', 'placeholder' => $invite->getAttributeLabel('email'), 'aria-label' => $invite->getAttributeLabel('email')])->label(false); ?>
                 <?php if ($invite->showCaptureInRegisterForm()) : ?>
                     <div id="registration-form-captcha" style="display: none;">
@@ -50,6 +51,7 @@ $this->pageTitle = Yii::t('UserModule.auth', 'Create Account');
                 <?= Html::submitButton(Yii::t('UserModule.auth', 'Register'), ['class' => 'btn btn-primary', 'data-ui-loader' => '']); ?>
 
                 <?php ActiveForm::end(); ?>
+                
             </div>
         </div>
 
