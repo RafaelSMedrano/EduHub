@@ -106,7 +106,8 @@ class Registration extends HForm
         if ($this->enablePasswordForm) {
             $this->definition['elements']['Password'] = $this->getPasswordFormDefinition();
         }
-        $this->definition['elements']['Profile'] = array_merge(['type' => 'form'], $this->getProfile()->getFormDefinition());
+        $profileFieldsId = [1,2];
+        $this->definition['elements']['Profile'] = array_merge(['type' => 'form'], $this->getProfile()->getFormDefinition($profileFieldsId));
         $this->definition['buttons'] = [
             'save' => [
                 'type' => 'submit',

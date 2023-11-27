@@ -106,33 +106,147 @@ class AccountController extends BaseAccountController
         return $this->render('edit', ['hForm' => $form, 'accountStatus' => $accountStatus,]);
     }
     public function actionEditInRegistration() {
+        
         $user = Yii::$app->user->getIdentity();
         $user->profile->scenario = 'editProfile';
-
+        
         // Get Form Definition
-        $definition = $user->profile->getFormDefinition();
+        /*$definition = $user->profile->getFormDefinition();
         $definition['buttons'] = [
             'save' => [
                 'type' => 'submit',
                 'label' => Yii::t('UserModule.account', 'Save profile'),
                 'class' => 'btn btn-primary'
             ],
-        ];
+        ];*/
 
+
+
+///////////////////////
+
+
+
+        $FieldId = null;
+        if($user->profile->profile_category==null) {
+            $FieldId = 27;
+            $definition = $user->profile->getFormDefinitionByField([27]);
+            
+            $definition['buttons'] = [
+                'continue' => [
+                    'type' => 'submit',
+                    'label' => Yii::t('UserModule.account', 'Continue'),
+                    'class' => 'btn btn-primary'
+                ],
+            ];
+        } 
+
+        elseif(!isset($user->profile->objective)) {
+            $definition = $user->profile->getFormDefinitionByField([28]);
+            $FieldId = 28;
+            $definition['buttons'] = [
+            'continue' => [
+                'type' => 'submit',
+                'label' => Yii::t('UserModule.account', 'Continue'),
+                'class' => 'btn btn-primary'
+            ],
+        ];
+        }
+        elseif(!isset($user->profile->entrepreneurial_journey_estage)) {
+            $definition = $user->profile->getFormDefinitionByField([29]);
+            $FieldId = 29;
+            $definition['buttons'] = [
+            'continue' => [
+                'type' => 'submit',
+                'label' => Yii::t('UserModule.account', 'Continue'),
+                'class' => 'btn btn-primary'
+            ],
+        ];
+        }
+        elseif(!isset($user->profile->work_personality)) {
+            $definition = $user->profile->getFormDefinitionByField([30]);
+            $FieldId = 30;
+            $definition['buttons'] = [
+            'continue' => [
+                'type' => 'submit',
+                'label' => Yii::t('UserModule.account', 'Continue'),
+                'class' => 'btn btn-primary'
+            ],
+        ];
+        }
+        elseif(!isset($user->profile->businesses_interests_type)) {
+            $definition = $user->profile->getFormDefinitionByField([31]);
+            $FieldId = 31;
+            $definition['buttons'] = [
+            'continue' => [
+                'type' => 'submit',
+                'label' => Yii::t('UserModule.account', 'Continue'),
+                'class' => 'btn btn-primary'
+            ],
+        ];
+        }
+        elseif(!isset($user->profile->entrepreneurship_topics_interests)) {
+            $definition = $user->profile->getFormDefinitionByField([32]);
+            $FieldId = 32;
+            $definition['buttons'] = [
+            'continue' => [
+                'type' => 'submit',
+                'label' => Yii::t('UserModule.account', 'Continue'),
+                'class' => 'btn btn-primary'
+            ],
+        ];
+        }
+        elseif(!isset($user->profile->market_interests)) {
+            $definition = $user->profile->getFormDefinitionByField([33]);
+            $FieldId = 33;
+            $definition['buttons'] = [
+            'continue' => [
+                'type' => 'submit',
+                'label' => Yii::t('UserModule.account', 'Continue'),
+                'class' => 'btn btn-primary'
+            ],
+        ];
+        }
+        elseif(!isset($user->profile->tecnology_interests)) {
+            $definition = $user->profile->getFormDefinitionByField([34]);
+            $FieldId = 34;
+            $definition['buttons'] = [
+            'save' => [
+                'type' => 'submit',
+                'label' => Yii::t('UserModule.account', 'Save'),
+                'class' => 'btn btn-primary'
+            ],
+        ];
+        }
+/////////////////////////////  
+        
+        
+        
         $form = new HForm($definition, $user->profile);
         $form->showErrorSummary = true;
         $layout = '@humhub/modules/user/views/layouts/profileRegistrationLayout';
-        $accountStatus = 'register';
+        
+        if ($form->submitted('continue') && $form->validate() && $form->save()) {
+            // Trigger search refresh
+            
+            $user->save();
+            
+
+            //$this->view->saved();
+            
+            return $this->redirect(['edit-in-registration']);
+        }
         if ($form->submitted('save') && $form->validate() && $form->save()) {
             // Trigger search refresh
+            
             $user->save();
             
 
             $this->view->saved();
-            return $this->redirect(['edit-in-registration']);
+            
+            return $this->redirect(Yii::$app->user->returnUrl);
         }
         
-        return $this->render('editInRegistration', ['hForm' => $form, 'layout' => $layout, 'accountStatus' => $accountStatus,]);
+        return $this->render('editInRegistration', ['hForm' => $form, 'layout' => $layout, 'fieldId' => $FieldId]);
     }    
     /**
      * Change Account

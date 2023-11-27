@@ -23,11 +23,11 @@ AppAsset::register($this);
 </head>
 
 <body class="login-container">
-    oi?
+   
 <?php $this->beginBody() ?>
 <?= $content; ?>
 <br />
-
+<?= FooterMenu::widget(['location' => FooterMenu::LOCATION_LOGIN]); ?>
 <?php $this->endBody() ?>
 </body>
 

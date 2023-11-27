@@ -66,7 +66,7 @@ class User extends ContentContainerActiveRecord implements IdentityInterface, Se
     const STATUS_ENABLED = 1;
     const STATUS_NEED_APPROVAL = 2;
     const STATUS_SOFT_DELETED = 3;
-
+    const STATUS_REGISTERING = 4;
     /**
      * Visibility Modes
      */

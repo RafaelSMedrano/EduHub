@@ -52,9 +52,10 @@ use yii\base\Exception;
  * @property string $entrepreneurial_journey_estage
  * @property string $work_personality
  * @property string $businesses_interests_type
- * @property string $Entrepreneurship_Topics_Interests
- * @property string $Market_Interests
- * @property string $Tecnology_Interests
+ * @property string $entrepreneurship_topics_interests
+ * @property string $market_interests
+ * @property string $tecnology_interests
+ * @property string $isRegistered
 
  * @property User $user
  */
@@ -188,6 +189,7 @@ class Profile extends ActiveRecord
         Yii::t('UserModule.profile', 'Entrepreneurship Topics Interests');
         Yii::t('UserModule.profile', 'Market Interests');
         Yii::t('UserModule.profile', 'Technology Interests');
+        Yii::t('UserModule.profile', 'Is Registered');
 
     }
 
@@ -216,20 +218,67 @@ class Profile extends ActiveRecord
         return $this->hasOne(User::class, ['id' => 'user_id']);
     }
 
-    /**
-     * Returns the Profile as CForm
-     */
-    public function getFormDefinition()
-    {
+    public function getFormDefinitionByField($profileFieldsId=[]) {
         $definition = [];
         $definition['elements'] = [];
 
         $syncAttributes = [];
+
         if ($this->user !== null) {
             $syncAttributes = (new AuthClientUserService($this->user))->getSyncAttributes();
-        }
+        }        
 
         $safeAttributes = $this->safeAttributes();
+        
+        foreach ($profileFieldsId as $profileFieldId) {
+            $profileField = ProfileField::findOne($profileFieldId);
+            $profileField->editable = true;
+
+                if (!in_array($profileField->internal_name, $safeAttributes)) {
+                    if ($profileField->visible && $this->scenario != 'registration') {
+                        $profileField->editable = false;
+                    } else {
+                        continue;
+                    }
+                }
+
+                // Dont allow editing of ldap syned fields - will be overwritten on next ldap sync.
+                if (in_array($profileField->internal_name, $syncAttributes)) {
+                    $profileField->editable = false;
+                }
+
+                $fieldDefinition = $profileField->fieldType->getFieldFormDefinition($this->user);
+
+                if (isset($fieldDefinition[$profileField->internal_name]) && !empty($profileField->description)) {
+                    $fieldDefinition[$profileField->internal_name]['hint'] =  Yii::t($profileField->getTranslationCategory() ?: $profileFieldCategory->getTranslationCategory(), $profileField->description);
+                }
+                
+                $profileField->fieldType->loadDefaults($this);
+
+                $definition['elements'] = array_merge($definition['elements'], $fieldDefinition);
+        }
+        
+        return $definition;
+
+    }
+
+    /**
+     * Returns the Profile as CForm
+     */
+    public function getFormDefinition()
+    {   
+        $definition = [];
+        $definition['elements'] = [];
+
+        $syncAttributes = [];
+
+        if ($this->user !== null) {
+            $syncAttributes = (new AuthClientUserService($this->user))->getSyncAttributes();
+        }        
+
+        $safeAttributes = $this->safeAttributes();
+
+
 
         foreach (ProfileFieldCategory::find()->orderBy('sort_order')->all() as $profileFieldCategory) {
             $category = [
@@ -237,11 +286,10 @@ class Profile extends ActiveRecord
                 'title' => Yii::t($profileFieldCategory->getTranslationCategory(), $profileFieldCategory->title),
                 'elements' => [],
             ];
-
             foreach (
-                ProfileField::find()->orderBy('sort_order')->where(['profile_field_category_id' => $profileFieldCategory->id])->all() as $profileField
-         ) 
-         {
+                ProfileField::find()->orderBy('sort_order')
+                    ->where(['profile_field_category_id' => $profileFieldCategory->id])->all() as $profileField
+            ) {
                 /** @var ProfileField $profileField */
                 $profileField->editable = true;
 
@@ -274,6 +322,20 @@ class Profile extends ActiveRecord
 
         return $definition;
     }
+                  
+
+
+/////////////////////////////////////////
+
+
+
+
+
+
+
+  
+
+        
 
     /**
      * @inheritdoc
