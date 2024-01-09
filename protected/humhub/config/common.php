@@ -56,14 +56,17 @@ $config = [
             'targets' => [
                 \yii\log\FileTarget::class => [
                     'class' => \yii\log\FileTarget::class,
-                    'levels' => ['error', 'warning'],
+                    'levels' => ['error', 'warning', 'trace'],
                     'except' => [
                         'yii\web\HttpException:400', 'yii\web\HttpException:401', 'yii\web\HttpException:403',
                         'yii\web\HttpException:404', 'yii\web\HttpException:405',
                         'yii\web\User::getIdentityAndDurationFromCookie', 'yii\web\User::renewAuthStatus'
                     ],
                     'logVars' => ['_GET', '_SERVER'],
+                    
                 ],
+                
+                
                 \yii\log\DbTarget::class =>[
                     'class' => \yii\log\DbTarget::class,
                     'levels' => ['error', 'warning'],
@@ -85,6 +88,7 @@ $config = [
         ],
         'i18n' => [
             'class' => \humhub\components\i18n\I18N::class,
+            
             'translations' => [
                 'base' => [
                     'class' => PhpMessageSource::class,

@@ -48,9 +48,9 @@ use yii\base\Exception;
  * @property string $url_googleplus
  * @property string $url_twitter
  * 
- * @property string $profile_category
+ * @property string $eduhub_profile_type
  * @property string $entrepreneurial_journey_estage
- * @property string $work_personality
+ * @property string $professional_personality
  * @property string $businesses_interests_type
  * @property string $entrepreneurship_topics_interests
  * @property string $market_interests
@@ -182,9 +182,9 @@ class Profile extends ActiveRecord
         Yii::t('UserModule.profile', 'Instagram URL');
         Yii::t('UserModule.profile', 'Twitter URL');
 
-        Yii::t('UserModule.profile', 'Profile Category');
+        Yii::t('UserModule.profile', 'EduHub Profile Type');
         Yii::t('UserModule.profile', 'Entrepreneurial Journey Estage');
-        Yii::t('UserModule.profile', 'Work Personality');
+        Yii::t('UserModule.profile', 'Professional Personality');
         Yii::t('UserModule.profile', 'Businesses Interests Type');
         Yii::t('UserModule.profile', 'Entrepreneurship Topics Interests');
         Yii::t('UserModule.profile', 'Market Interests');
@@ -217,6 +217,7 @@ class Profile extends ActiveRecord
     {
         return $this->hasOne(User::class, ['id' => 'user_id']);
     }
+    
 
     public function getFormDefinitionByField($profileFieldsId=[]) {
         $definition = [];
@@ -261,6 +262,11 @@ class Profile extends ActiveRecord
         return $definition;
 
     }
+    
+    public function getFieldValue($profileFiled){
+        return $this->$profileFiled;
+    }
+  
 
     /**
      * Returns the Profile as CForm

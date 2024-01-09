@@ -158,7 +158,8 @@ class HForm extends \yii\base\Component
             if (isset($element['type']) && $element['type'] == 'form') {
                 $forms[] = $name;
                 if (isset($element['elements']) && count($element['elements']) > 0) {
-                    $output .= $this->renderForm($element);
+                    $output .= $this->renderForm($element); //retorna uma tag $output = "<fieldset class='" . $class . "'>"estiliza o form
+                    //placeInForm
                     $output .= $this->renderElements($element['elements'], $forms);
                     $output .= $this->renderFormEnd($element);
                 }
@@ -178,7 +179,12 @@ class HForm extends \yii\base\Component
         }
 
         $output = "<fieldset class='" . $class . "'>";
-        if (isset($element['title'])) {
+        if(isset($element['question'])) {
+            sleep(20);
+            $output .= "<legend>" . $element['question'] . "</legend>";
+        }
+        elseif(isset($element['title']) && !isset($element['question'])) {
+            
             $output .= "<legend>" . $element['title'] . "</legend>";
         } else {
             #$output .= "Untitled Form";
@@ -205,7 +211,7 @@ class HForm extends \yii\base\Component
         return $output;
     }
 
-    public function renderField($name, $definition, $forms)
+    public function renderField($name, $definition, $forms) //nome do field, array de nomes,
     {
         if (isset($definition['isVisible']) && !$definition['isVisible']) {
             return;

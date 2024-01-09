@@ -15,7 +15,8 @@
         <?= $this->render('head'); ?>
     </head>
     <body>
-        <?php $this->beginBody('@humhub/protected/humhub/views/layouts/profileRegistrationLayout.php') ?>  
+        <?php $this->beginBody('@humhub/protected/humhub/views/layouts/profileRegistrationLayout.php') ?> 
+        <?= "Minha String" ?>
         <?= $content; ?>
         <?php $this->endBody() ?>
     </body>

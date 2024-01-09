@@ -16,4 +16,5 @@ namespace yii\helpers;
  */
 class Console extends BaseConsole
 {
+    
 }

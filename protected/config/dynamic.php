@@ -1,6 +1,6 @@
 <?php return array (
   'name' => 'EduHub',
-  'language' => 'en-US',
+  'language' => 'pt-BR',
   'components' => 
   array (
     'user' => 
@@ -20,15 +20,15 @@
     ),
     'formatter' => 
     array (
-      'defaultTimeZone' => 'UTC',
+      'defaultTimeZone' => 'America/Sao_Paulo',
     ),
   ),
   'params' => 
   array (
-    'config_created_at' => 1698223441,
+    'config_created_at' => 1704652052,
     'horImageScrollOnMobile' => 1,
     'databaseInstalled' => true,
     'installed' => true,
   ),
-  'timeZone' => 'UTC',
+  'timeZone' => 'America/Sao_Paulo',
 ); ?>

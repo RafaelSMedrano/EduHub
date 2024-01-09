@@ -11,7 +11,9 @@ $config = [
     'bootstrap' => ['humhub\components\bootstrap\LanguageSelector'],
     'defaultRoute' => '/home',
     'layoutPath' => '@humhub/views/layouts',
+    
     'components' => [
+        
         'assetManager' => [
             'bundles' => [
                 'yii\web\JqueryAsset' => [
@@ -49,6 +51,7 @@ $config = [
                 'sameSite' => yii\web\Cookie::SAME_SITE_LAX,
             ],
         ],
+        
     ],
     'modules' => [
         'web' => [

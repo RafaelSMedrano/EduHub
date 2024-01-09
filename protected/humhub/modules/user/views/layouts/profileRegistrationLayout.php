@@ -18,6 +18,8 @@ AppAsset::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <?php $this->head() ?>
     
+
+    
     <?= $this->render('@humhub/views/layouts/head'); ?>
     <meta charset="<?= Yii::$app->charset ?>">
 </head>
@@ -25,10 +27,14 @@ AppAsset::register($this);
 <body class="login-container">
    
 <?php $this->beginBody() ?>
+<?= "Minha String" ?>
 <?= $content; ?>
 <br />
 <?= FooterMenu::widget(['location' => FooterMenu::LOCATION_LOGIN]); ?>
+
 <?php $this->endBody() ?>
+
+
 </body>
 
 </html>

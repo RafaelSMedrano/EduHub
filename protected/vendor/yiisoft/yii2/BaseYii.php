@@ -533,9 +533,10 @@ class BaseYii
      * @return string the translated message.
      */
     public static function t($category, $message, $params = [], $language = null)
-    {
+    {   $language = 'pt-br'; //adicionei
         if (static::$app !== null) {
-            return static::$app->getI18n()->translate($category, $message, $params, $language ?: static::$app->language);
+            //original: return static::$app->getI18n()->translate($category, $message, $params, $language ?: static::$app->language);
+            return static::$app->getI18n()->translate($category, $message, $params, 'pt-BR');
         }
 
         $placeholders = [];

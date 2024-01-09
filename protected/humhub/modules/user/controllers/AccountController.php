@@ -19,9 +19,15 @@ use humhub\modules\user\models\forms\AccountChangeEmail;
 use humhub\modules\user\models\forms\AccountChangeUsername;
 use humhub\modules\user\models\forms\AccountDelete;
 use humhub\modules\user\models\User;
+use humhub\modules\user\models\ProfileField;
+use humhub\modules\user\models\fieldtype\BaseType;
+use humhub\libs\Helpers;
+use yii\helpers\Html;
 use humhub\modules\user\Module;
 use Yii;
 use yii\web\HttpException;
+use yii\db\ActiveRecord;
+use yii\db\ActiveQuery;
 
 /**
  * AccountController provides all standard actions for the current logged in
@@ -37,6 +43,7 @@ class AccountController extends BaseAccountController
      */
     protected $doNotInterceptActionIds = ['delete'];
     public $layout = "@humhub/modules/user/views/layouts/profileRegistrationLayout";
+    
     
     
     /**
@@ -62,7 +69,24 @@ class AccountController extends BaseAccountController
     /**
      * Redirect to current users profile
      * @throws \Throwable
+     * 
      */
+    public function getProfileFieldById($profileFieldId){
+        $user = Yii::$app->user->getIdentity();
+        $profileFields = [
+            '27' => $user->profile->eduhub_profile_type,
+            '28' => $user->profile->objective,
+            '29' => $user->profile->entrepreneurial_journey_estage,
+            '30' => $user->profile->professional_personality,
+            '31' => $user->profile->businesses_interests_type,
+            '32' => $user->profile->entrepreneurship_topics_interests,
+            '33' => $user->profile->market_interests,
+            '34' => $user->profile->tecnology_interests,
+        ];
+
+        return $profileFields[$profileFieldId];
+    }
+    
     public function actionIndex()
     {
         if (Yii::$app->user->isGuest) {
@@ -107,28 +131,39 @@ class AccountController extends BaseAccountController
     }
     public function actionEditInRegistration() {
         
+        
         $user = Yii::$app->user->getIdentity();
         $user->profile->scenario = 'editProfile';
+        /*$session = Yii::$app->session;
+        if (!$session->has('backPage')) {            
+            $session['backPage'] = 0;
+        }
+        else {
+            
+            $backPage = $session['backPage'];            
+            $profileField = $this->getProfileFieldById($backPage);
+                        
+            if ($backPage != 0 && $this->getProfileFieldById($backPage) == null) { 
+                $profileField = $this->getProfileFieldById($backPage-1);           
         
-        // Get Form Definition
-        /*$definition = $user->profile->getFormDefinition();
-        $definition['buttons'] = [
-            'save' => [
-                'type' => 'submit',
-                'label' => Yii::t('UserModule.account', 'Save profile'),
-                'class' => 'btn btn-primary'
-            ],
-        ];*/
-
-
-
-///////////////////////
-
+                if ($profileField != null) {
+                    //Defina o campo como null
+                    $user->profile->scenario = 'editProfile';
+                    $profileField = null;
+                
+                 //Salve as alterações no perfil
+                    $user->profile->save();        
+                }
+            }
+        }*/
+        
 
 
         $FieldId = null;
-        if($user->profile->profile_category==null) {
+        if($this->getProfileFieldById(27) == null) {
+            
             $FieldId = 27;
+            $session['backPage'] = 27;
             $definition = $user->profile->getFormDefinitionByField([27]);
             
             $definition['buttons'] = [
@@ -140,31 +175,40 @@ class AccountController extends BaseAccountController
             ];
         } 
 
-        elseif(!isset($user->profile->objective)) {
+        
+
+        elseif($this->getProfileFieldById(28) == null) {
+            $session['backPage'] = 28;
             $definition = $user->profile->getFormDefinitionByField([28]);
             $FieldId = 28;
+            
             $definition['buttons'] = [
             'continue' => [
                 'type' => 'submit',
                 'label' => Yii::t('UserModule.account', 'Continue'),
                 'class' => 'btn btn-primary'
-            ],
-        ];
+                    ],
+            ];
         }
-        elseif(!isset($user->profile->entrepreneurial_journey_estage)) {
+        elseif($this->getProfileFieldById(29) == null) {
+            $session['backPage'] = 29;
             $definition = $user->profile->getFormDefinitionByField([29]);
             $FieldId = 29;
+            
             $definition['buttons'] = [
             'continue' => [
                 'type' => 'submit',
                 'label' => Yii::t('UserModule.account', 'Continue'),
                 'class' => 'btn btn-primary'
-            ],
-        ];
+                            ],
+            ];
         }
-        elseif(!isset($user->profile->work_personality)) {
+        //elseif(!isset($user->profile->professional_personality) && in_array('opt1', explode(' ', $user->profile->eduhub_profile_type))) {
+        elseif($this->getProfileFieldById(30) == null){
+            $session['backPage'] = 30;
             $definition = $user->profile->getFormDefinitionByField([30]);
             $FieldId = 30;
+            
             $definition['buttons'] = [
             'continue' => [
                 'type' => 'submit',
@@ -173,9 +217,11 @@ class AccountController extends BaseAccountController
             ],
         ];
         }
-        elseif(!isset($user->profile->businesses_interests_type)) {
+        elseif($this->getProfileFieldById(31) == null) {
+            $session['backPage'] = 31;
             $definition = $user->profile->getFormDefinitionByField([31]);
             $FieldId = 31;
+            
             $definition['buttons'] = [
             'continue' => [
                 'type' => 'submit',
@@ -184,9 +230,11 @@ class AccountController extends BaseAccountController
             ],
         ];
         }
-        elseif(!isset($user->profile->entrepreneurship_topics_interests)) {
+        elseif($this->getProfileFieldById(32) == null) {
+            $session['backPage'] = 32;
             $definition = $user->profile->getFormDefinitionByField([32]);
             $FieldId = 32;
+            
             $definition['buttons'] = [
             'continue' => [
                 'type' => 'submit',
@@ -195,9 +243,11 @@ class AccountController extends BaseAccountController
             ],
         ];
         }
-        elseif(!isset($user->profile->market_interests)) {
+        elseif($this->getProfileFieldById(33) == null) {
+            $session['backPage'] = 33;
             $definition = $user->profile->getFormDefinitionByField([33]);
             $FieldId = 33;
+            
             $definition['buttons'] = [
             'continue' => [
                 'type' => 'submit',
@@ -206,9 +256,11 @@ class AccountController extends BaseAccountController
             ],
         ];
         }
-        elseif(!isset($user->profile->tecnology_interests)) {
+        elseif($this->getProfileFieldById(34) == null) {
+            $session['backPage'] = 34;
             $definition = $user->profile->getFormDefinitionByField([34]);
             $FieldId = 34;
+            
             $definition['buttons'] = [
             'save' => [
                 'type' => 'submit',
@@ -226,10 +278,11 @@ class AccountController extends BaseAccountController
         $layout = '@humhub/modules/user/views/layouts/profileRegistrationLayout';
         
         if ($form->submitted('continue') && $form->validate() && $form->save()) {
-            // Trigger search refresh
             
-            $user->save();
             
+            $user->profile->save(); 
+            
+            sleep(5);
 
             //$this->view->saved();
             
@@ -238,7 +291,7 @@ class AccountController extends BaseAccountController
         if ($form->submitted('save') && $form->validate() && $form->save()) {
             // Trigger search refresh
             
-            $user->save();
+            $user->profile->actionBannerImageUploadsave();
             
 
             $this->view->saved();

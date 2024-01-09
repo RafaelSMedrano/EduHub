@@ -121,6 +121,7 @@ class ProfileFieldCategory extends ActiveRecord
         Yii::t('UserModule.profile', 'General');
         Yii::t('UserModule.profile', 'Communication');
         Yii::t('UserModule.profile', 'Social bookmarks');
+        Yii::t('UserModule.profile', 'EduHub');
     }
 
 }

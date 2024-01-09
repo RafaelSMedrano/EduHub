@@ -30,43 +30,14 @@ $this->pageTitle = Yii::t('UserModule.account', 'Create Your EduHub profile');
 
                 
                 <div class="help-block">
-                    <?= Yii::t('UserModule.account', 'You can do it. Selecione os próximos tópicos com atenção, pois eles vão ajudar o EduHub a gerar recomendações efetivas para você (as respostas selecionadas poderão ser editadas posteriormente no seu perfil)'); ?>
+                    <?= Yii::t('UserModule.account', 'Selecione os próximos tópicos com atenção, pois eles vão ajudar o EduHub a gerar recomendações efetivas para você (as respostas selecionadas poderão ser editadas posteriormente no seu perfil)'); ?>
                 </div>
                 <?php $form = ActiveForm::begin(['enableClientValidation' => false, 'options' => ['data-ui-widget' => 'ui.form.TabbedForm', 'data-ui-init' => '', 'style' => 'display:none'],  'acknowledge' => true]); ?>
-                    <?php if($fieldId == 27): ?>                        
-                        Você é?
-                        <br>
-                    <?php endif; ?> 
-                    <?php if($fieldId == 28): ?>
-                        Qual seu objetivo? (escolha quantos quiser)
-                        <br>
-                    <?php endif; ?> 
-                    <?php if($fieldId == 29): ?>
-                        Se for aluno, selecione o estágio da jornada empreendedora que você está.
-                    Se for entidade, selecione os estágios da jornada empreendedora que você oferece serviços
-                    (escolha quantos quiser)
-                    <br>
-                    <?php endif; ?> 
-                    <?php if($fieldId == 30): ?>
-                        Perfil que você se identifica?
-                        <br>
-                    <?php endif; ?>
-                    <?php if($fieldId == 31): ?>
-                        Tipos de negócios de interesse? (selecione quantos quiser)
-                        <br>
-                    <?php endif; ?> 
-                    <?php if($fieldId == 32): ?>
-                        Tópicos de empreendedorismo de Interesse:
-                        <br>
-                    <?php endif; ?> 
-                    <?php if($fieldId == 33): ?>
-                        Mercados de interesse: (selecione quantos quiser)
-                        <br>
-                    <?php endif; ?>     
-                    <?php if($fieldId == 33): ?>
-                        Tecnologia de interesse: (selecione quantos quiser)
-                        <br>
-                    <?php endif; ?>  
+                    
+                    
+                    
+                    
+                      
                     <?= $hForm->render($form) ?>
                 <?php ActiveForm::end(); ?>
                 

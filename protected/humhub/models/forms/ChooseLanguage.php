@@ -39,6 +39,7 @@ class ChooseLanguage extends Model
     public function attributeLabels()
     {
         return [
+            
             'language' => Yii::t('base', 'Language'),
         ];
     }
@@ -51,6 +52,7 @@ class ChooseLanguage extends Model
      */
     public function save()
     {
+        
         if ($this->validate()) {
             $cookie = new \yii\web\Cookie([
                 'name' => 'language',
@@ -72,6 +74,7 @@ class ChooseLanguage extends Model
      */
     public function getSavedLanguage()
     {
+        
         if (isset(Yii::$app->request->cookies['language'])) {
             $this->language = (string) Yii::$app->request->cookies['language'];
 
@@ -85,6 +88,7 @@ class ChooseLanguage extends Model
                 Yii::$app->getResponse()->getCookies()->add($cookie);
             } else {
                 return $this->language;
+                
             }
         }
 

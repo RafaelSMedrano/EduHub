@@ -19,6 +19,8 @@ use humhub\modules\user\Module;
 use humhub\modules\user\services\InviteRegistrationService;
 use humhub\modules\user\services\LinkRegistrationService;
 use humhub\modules\user\widgets\AuthChoice;
+use humhub\modules\user\controllers\AccountController;
+use humhub\modules\user\models\ProfileField;
 use Yii;
 use yii\authclient\BaseClient;
 use yii\authclient\ClientInterface;
@@ -74,7 +76,16 @@ class RegistrationController extends Controller
      * @throws Exception
      */
     public function actionIndex()
-    {
+
+        {
+            
+
+           // if (AccountController::$backPage != 0) {
+                
+           //         return $this->redirect(['account/edit-in-registration', 'returnBackPage' => AccountController::$backPage]);
+                
+          //  }
+
         $registration = new Registration();
 
         /**

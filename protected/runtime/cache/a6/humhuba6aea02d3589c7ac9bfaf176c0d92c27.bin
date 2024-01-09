@@ -1,20 +1,20 @@
-a:2:{i:0;s:1420:"
+a:2:{i:0;s:1477:"
 
-<a href="/index.php?r=activity%2Flink&id=62">
+<a href="/index.php?r=activity%2Flink&id=138">
 
     <div class="media">
                     <!-- Show user image -->
-            <span class="pull-left has-online-status img-size-medium"><img class="media-object img-rounded" src="/static/img/default_user.jpg" width="32" alt="Foto de perfil de asdfatearyyer" style="width: 32px; height: 32px" data-contentcontainer-id="38"><span class="tt user-online-status user-is-offline" title="Offline"></span></span>        
+            <span class="pull-left has-online-status img-size-medium"><img class="media-object img-rounded" src="/static/img/default_user.jpg" width="32" alt="Foto de perfil de fasdfasdfffffff fasdfare" style="width: 32px; height: 32px" data-contentcontainer-id="108"><span class="tt user-online-status user-is-offline" title="Offline"></span></span>        
         <!-- Show space image, if you are outside from a space -->
                                     <div class="img-space pull-left space-profile-acronym-1 space-acronym" style=" background-color: #6fdbe8; width: 20px; height: 20px; font-size: 8.8px; padding: 3.6px 0; border-radius: 2px;" data-contentcontainer-id="2">WS</div><img class="img-space pull-left space-profile-image-1 img-rounded profile-user-photo hidden" src="/static/img/default_space.jpg" alt="Welcome Space" style=" width: 20px; height: 20px" data-contentcontainer-id="2">            
         
         <div class="media-body text-break">
 
             <!-- Show content -->
-            <strong>asdfatearyyer</strong> entrou no espaço <strong>Welcome Space</strong>            <br>
+            <strong>fasdfasdfffffff fasdfare</strong> entrou no espaço <strong>Welcome Space</strong>            <br>
 
             <!-- show time -->
-            <time class="tt time timeago" datetime="2023-11-24T20:32:53+00:00" title="24 de nov. de 2023 - 20:32">24 de nov. de 2023</time>        </div>
+            <time class="tt time timeago" data-ui-addition="timeago" datetime="2024-01-07T01:10:38-03:00" title="7 de jan. de 2024 - 01:10">7 de jan. de 2024 - 01:10</time>        </div>
     </div>
 
 </a>

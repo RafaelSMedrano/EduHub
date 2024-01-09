@@ -25,6 +25,7 @@ use yii\helpers\Html;
  * @property string $field_type_config
  * @property string $internal_name
  * @property string $title
+ * @property string $question
  * @property string $description
  * @property integer $sort_order
  * @property integer $required
@@ -115,6 +116,7 @@ class ProfileField extends ActiveRecord
             'created_by' => Yii::t('UserModule.profile', 'Created by'),
             'updated_at' => Yii::t('UserModule.profile', 'Updated at'),
             'updated_by' => Yii::t('UserModule.profile', 'Updated by'),
+            'question' => Yii::t('UserModule.profile', 'Pergunta'),
         ];
     }
 
@@ -190,7 +192,7 @@ class ProfileField extends ActiveRecord
                         'type' => 'text',
                         'maxlength' => 32,
                         'class' => 'form-control',
-                    ],
+                    ],                                        
                     'description' => [
                         'type' => 'textarea',
                         'class' => 'form-control',
@@ -248,6 +250,20 @@ class ProfileField extends ActiveRecord
                         'class' => 'form-control',
                         'readonly' => !$this->isNewRecord, // Cannot be changed for existing record
                     ],
+                    'question' => [
+                        'type' => 'text',
+                        'maxlength' => 225,
+                        'class' => 'form-control',
+                        
+                    ],
+                /*'descriprionByFieldPlaces' => [
+                    'description1' => [
+                        'place' => 'place',
+                        'message' => 'message',
+                    ]
+                ]
+                
+                */     
                 ]
             ]];
     }
@@ -257,6 +273,8 @@ class ProfileField extends ActiveRecord
      *
      * Also ensures that internal_name could not be changed on existing records.
      */
+    
+
     public function checkInternalName()
     {
 

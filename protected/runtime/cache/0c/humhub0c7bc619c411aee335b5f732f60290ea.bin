@@ -1,20 +1,20 @@
-a:2:{i:0;s:1415:"
+a:2:{i:0;s:1492:"
 
-<a href="/index.php?r=activity%2Flink&id=57">
+<a href="/index.php?r=activity%2Flink&id=122">
 
     <div class="media">
                     <!-- Show user image -->
-            <span class="pull-left has-online-status img-size-medium"><img class="media-object img-rounded" src="/static/img/default_user.jpg" width="32" alt="Profile picture of rafadffff veves" style="width: 32px; height: 32px" data-contentcontainer-id="33"><span class="tt user-online-status user-is-offline" title="Offline"></span></span>        
+            <span class="pull-left has-online-status img-size-medium"><img class="media-object img-rounded" src="/static/img/default_user.jpg" width="32" alt="Profile picture of dfafaafadffasdttwte afdsdfsadfsaggs" style="width: 32px; height: 32px" data-contentcontainer-id="92"><span class="tt user-online-status user-is-offline" title="Offline"></span></span>        
         <!-- Show space image, if you are outside from a space -->
                                     <div class="img-space pull-left space-profile-acronym-1 space-acronym" style=" background-color: #6fdbe8; width: 20px; height: 20px; font-size: 8.8px; padding: 3.6px 0; border-radius: 2px;" data-contentcontainer-id="2">WS</div><img class="img-space pull-left space-profile-image-1 img-rounded profile-user-photo hidden" src="/static/img/default_space.jpg" alt="Welcome Space" style=" width: 20px; height: 20px" data-contentcontainer-id="2">            
         
         <div class="media-body text-break">
 
             <!-- Show content -->
-            <strong>rafadffff veves</strong> joined the space <strong>Welcome Space</strong>            <br>
+            <strong>dfafaafadffasdttwte afdsdfsadfsaggs</strong> joined the space <strong>Welcome Space</strong>            <br>
 
             <!-- show time -->
-            <time class="tt time timeago" datetime="2023-11-20T22:20:15+00:00" title="Nov 20, 2023 - 10:20 PM">Nov 20, 2023</time>        </div>
+            <time class="tt time timeago" data-ui-addition="timeago" datetime="2024-01-04T12:03:57+00:00" title="Jan 4, 2024 - 12:03 PM">Jan 4, 2024 - 12:03 PM</time>        </div>
     </div>
 
 </a>
