@@ -24,11 +24,8 @@ $this->pageTitle = Yii::t('UserModule.auth', 'Login');
 
     <div class="panel panel-default animated bounceIn" id="login-form"
          style="max-width: 300px; margin: 0 auto 20px; text-align: left;">
-
         <div class="panel-heading"><?= Yii::t('UserModule.auth', '<strong>Please</strong> sign in'); ?></div>
-
         <div class="panel-body">
-
             <?php if (Yii::$app->session->hasFlash('error')): ?>
                 <div class="alert alert-danger" role="alert">
                     <?= Yii::$app->session->getFlash('error') ?>

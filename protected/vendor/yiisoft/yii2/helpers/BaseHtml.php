@@ -561,7 +561,8 @@ class BaseHtml
      * @return string the generated input tag
      */
     public static function input($type, $name = null, $value = null, $options = [])
-    {
+    {   
+        
         if (!isset($options['type'])) {
             $options['type'] = $type;
         }
@@ -1841,7 +1842,7 @@ class BaseHtml
      * @return string the generated input list
      */
     protected static function activeListInput($type, $model, $attribute, $items, $options = [])
-    {
+    {   //$nam e $slection parecem pegar o nome e o valor de cada coluna da tabela. $attribute são as colunas
         $name = ArrayHelper::remove($options, 'name', static::getInputName($model, $attribute));
         $selection = ArrayHelper::remove($options, 'value', static::getAttributeValue($model, $attribute));
         if (!array_key_exists('unselect', $options)) {
@@ -2321,7 +2322,7 @@ class BaseHtml
      * @throws InvalidArgumentException if the attribute name contains non-word characters.
      */
     public static function getInputName($model, $attribute)
-    {
+    {   
         $formName = $model->formName();
         if (!preg_match(static::$attributeRegex, $attribute, $matches)) {
             throw new InvalidArgumentException('Attribute name must contain word characters only.');

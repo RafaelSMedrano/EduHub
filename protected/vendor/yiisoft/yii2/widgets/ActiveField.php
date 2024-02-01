@@ -711,7 +711,7 @@ class ActiveField extends Component
         $this->adjustLabelFor($options);
         $this->_skipLabelFor = true;
         $this->parts['{input}'] = Html::activeCheckboxList($this->model, $this->attribute, $items, $options);
-
+    // retorna [nome dos atributos do form//ou seja, nome das colunas do form modelo, valor atribuido as colunas, formDefinition]
         return $this;
     }
 

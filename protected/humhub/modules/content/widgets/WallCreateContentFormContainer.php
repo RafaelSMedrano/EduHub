@@ -7,12 +7,13 @@
 
 namespace humhub\modules\content\widgets;
 
+use Yii;
 use humhub\libs\Sort;
 use humhub\modules\content\widgets\stream\WallStreamEntryWidget;
 use humhub\components\Widget;
 use humhub\modules\content\components\ContentContainerActiveRecord;
 use yii\web\HttpException;
-
+use yii\helpers\VarDumper;
 /**
  * WallCreateContentFormContainer is the container widget to create "quick" create content forms above Stream/Wall.
  *
@@ -56,20 +57,21 @@ class WallCreateContentFormContainer extends Widget
     public function getTopSortedFormClass(): ?string
     {
         $forms = [];
+        
         foreach ($this->contentContainer->moduleManager->getContentClasses() as $content) {
-
+            
             $wallEntryWidget = WallStreamEntryWidget::getByContent($content);
             if (!$wallEntryWidget) {
                 continue;
             }
-
-            if (!$wallEntryWidget->hasCreateForm()) {
+            //Yii::debug('rastreando', VarDumper::dumpAsString($wallEntryWidget, 10, false));
+            if (!$wallEntryWidget->hasCreateForm()) { // hasCreateForm retorna o parâmetro creatFormClass do WallStreamEntryWidget
                 continue;
             }
 
             $forms[] = [
                 'class' => $wallEntryWidget->createFormClass,
-                'sortOrder' => [$wallEntryWidget->createFormSortOrder, ucfirst($content->getContentName())]
+                'sortOrder' => [$wallEntryWidget->createFormSortOrder, ucfirst($content->getContentName())] //ucirst é UperCaseFirst, aplica upercase no primeiro char
             ];
         }
 
@@ -79,7 +81,7 @@ class WallCreateContentFormContainer extends Widget
 
         Sort::sort($forms);
         $topForm = array_shift($forms);
-
+        
         return $topForm['class'];
     }
 

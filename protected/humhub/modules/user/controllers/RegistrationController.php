@@ -63,7 +63,9 @@ class RegistrationController extends Controller
             ) {
                 return $this->redirect($linkRegistrationService->getSpace()->getUrl());
             }
-            throw new HttpException(401, Yii::t('UserModule.base', 'Your are already logged in! - Logout first!'));
+            
+            throw new HttpException(401, 'Você já está logado! Termine de editar seu perfil nas configurações.');
+            
         }
 
         return parent::beforeAction($action);
@@ -75,19 +77,8 @@ class RegistrationController extends Controller
      * @throws HttpException
      * @throws Exception
      */
-    public function actionIndex()
-
-        {
-            
-
-           // if (AccountController::$backPage != 0) {
-                
-           //         return $this->redirect(['account/edit-in-registration', 'returnBackPage' => AccountController::$backPage]);
-                
-          //  }
-
+    public function actionIndex(){  
         $registration = new Registration();
-
         /**
          * @var BaseClient
          */

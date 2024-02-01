@@ -28,24 +28,29 @@ use yii\helpers\Html;
 /* @var $scheduleUrl string */
 ?>
 
-<div id="notifyUserContainer" class="form-group" style="margin-top:15px;display:none">
-    <?= UserPickerField::widget([
-        'id' => 'notifyUserInput',
-        'url' => $pickerUrl,
-        'formName' => 'notifyUserInput',
-        'maxSelection' => 10,
-        'disabledItems' => [Yii::$app->user->guid],
-        'placeholder' => Yii::t('ContentModule.base', 'Add a member to notify'),
-    ]) ?>
+
+    <div id="notifyUserContainer" class="form-group" style="margin-top:15px;display:none">
+        <?= UserPickerField::widget([
+            'id' => 'notifyUserInput',
+            'url' => $pickerUrl,
+            'formName' => 'notifyUserInput',
+            'maxSelection' => 10,
+            'disabledItems' => [Yii::$app->user->guid],
+            'placeholder' => Yii::t('ContentModule.base', 'Add a member to notify'),
+    ])  ?>
+    </div>
+    <?= Html::hiddenInput('state', Content::STATE_PUBLISHED) ?>
+<?php if (TopicPicker::showTopicPicker($contentContainer)) : ?>
+    <div id="postTopicContainer" class="form-group" style="margin-top:15px;">
+        <!-- 28/01 retirei o style="display:none" para que o campo seja exibido sem a necessidade de js -->  
+        <?= TopicPicker::widget([
+            'id' => 'postTopicInput',
+            'name' => 'postTopicInput',
+            'contentContainer' => $contentContainer
+        ]); ?>
 </div>
 
-<div id="postTopicContainer" class="form-group" style="margin-top:15px;display:none">
-    <?= TopicPicker::widget([
-        'id' => 'postTopicInput',
-        'name' => 'postTopicInput',
-        'contentContainer' => $contentContainer
-    ]); ?>
-</div>
+<?php endif; ?>
 
 <?= Html::hiddenInput('containerGuid', $contentContainer->guid); ?>
 <?= Html::hiddenInput('containerClass', get_class($contentContainer)); ?>

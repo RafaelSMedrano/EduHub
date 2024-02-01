@@ -29,12 +29,17 @@ $this->pageTitle = Yii::t('UserModule.account', 'Create Your EduHub profile');
                 
 
                 
-                <div class="help-block">
+                <!--<div class="help-block"> 
                     <?= Yii::t('UserModule.account', 'Selecione os próximos tópicos com atenção, pois eles vão ajudar o EduHub a gerar recomendações efetivas para você (as respostas selecionadas poderão ser editadas posteriormente no seu perfil)'); ?>
-                </div>
+                </div> -->
                 <?php $form = ActiveForm::begin(['enableClientValidation' => false, 'options' => ['data-ui-widget' => 'ui.form.TabbedForm', 'data-ui-init' => '', 'style' => 'display:none'],  'acknowledge' => true]); ?>
                     
-                    
+                    <?php
+                        foreach ($optionsSended['texts'] as $key => $htmlString) {
+                            echo $htmlString.'<br>';
+                        }
+                    ?>
+                    <br>
                     
                     
                       
@@ -66,5 +71,6 @@ $this->pageTitle = Yii::t('UserModule.account', 'Create Your EduHub profile');
             $('#app-title').removeClass('fadeIn');
         <?php endif; ?>
     <?php endforeach; ?>
+    
 
 </script>

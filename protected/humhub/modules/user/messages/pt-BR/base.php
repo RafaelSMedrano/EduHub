@@ -58,7 +58,7 @@ return [
     'Password needs to be at least {chars} characters long.' => 'A senha deve ter pelo menos {chars} caracteres.',
     'Password recovery' => 'Recuperação de senha',
     'Pending Requests' => 'Solicitações pendentes',
-    'People' => 'Pessoas',
+    'People' => 'Usuários da EduHub',
     'Permission' => 'Permissão',
     'Profile' => 'Perfil',
     'Profile posts only' => 'Somente postagens de perfil',

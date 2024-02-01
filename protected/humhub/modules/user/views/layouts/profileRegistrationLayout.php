@@ -27,12 +27,13 @@ AppAsset::register($this);
 <body class="login-container">
    
 <?php $this->beginBody() ?>
-<?= "Minha String" ?>
+
 <?= $content; ?>
 <br />
 <?= FooterMenu::widget(['location' => FooterMenu::LOCATION_LOGIN]); ?>
 
 <?php $this->endBody() ?>
+
 
 
 </body>

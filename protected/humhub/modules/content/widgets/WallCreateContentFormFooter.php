@@ -58,7 +58,8 @@ class WallCreateContentFormFooter extends Widget
      * @inheritdoc
      */
     public function run()
-    {
+    {   
+        
         return $this->render('@humhub/modules/content/widgets/views/wallCreateContentFormFooter', [
             'contentContainer' => $this->contentContainer,
             'submitUrl' => $this->contentContainer->createUrl($this->submitUrl),

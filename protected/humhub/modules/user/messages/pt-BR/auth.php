@@ -7,7 +7,7 @@ return array (
   '<strong>Password</strong> changed!' => '<strong>Senha</strong> alterada!',
   '<strong>Password</strong> recovery' => 'Recuperação de <strong>Senha</strong>',
   '<strong>Password</strong> recovery!' => 'Recuperação de <strong>senha</strong>!',
-  '<strong>Please</strong> sign in' => '<strong>Por favor</strong> faça o login',
+  '<strong>Please</strong> sign in' => '<strong>Acesse</strong> sua conta',
   '<strong>Registration</strong> successful!' => '<strong>Cadastrado com sucesso!</strong>',
   '<strong>Sign</strong> up' => '<strong>Crie</strong> sua conta',
   '<strong>Your account</strong> has been successfully created!' => '<strong>A sua conta</strong> foi criada com sucesso!',

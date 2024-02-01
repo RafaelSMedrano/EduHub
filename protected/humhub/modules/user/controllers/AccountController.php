@@ -25,6 +25,7 @@ use humhub\libs\Helpers;
 use yii\helpers\Html;
 use humhub\modules\user\Module;
 use Yii;
+use yii\helpers\VarDumper;
 use yii\web\HttpException;
 use yii\db\ActiveRecord;
 use yii\db\ActiveQuery;
@@ -73,6 +74,7 @@ class AccountController extends BaseAccountController
      */
     public function getProfileFieldById($profileFieldId){
         $user = Yii::$app->user->getIdentity();
+        
         $profileFields = [
             '27' => $user->profile->eduhub_profile_type,
             '28' => $user->profile->objective,
@@ -80,12 +82,22 @@ class AccountController extends BaseAccountController
             '30' => $user->profile->professional_personality,
             '31' => $user->profile->businesses_interests_type,
             '32' => $user->profile->entrepreneurship_topics_interests,
-            '33' => $user->profile->market_interests,
-            '34' => $user->profile->tecnology_interests,
+            '33' => $user->profile->technology_interests,
+            '34' => $user->profile->market_interests,
+            
         ];
 
         return $profileFields[$profileFieldId];
     }
+    public function setProfileFieldById($profileFieldId, $value){
+        $user = Yii::$app->user->getIdentity();
+        $user->profile->scenario = 'editProfile';  
+        $profileField = ProfileField::findOne($profileFieldId);      
+        $user->profile->{$profileField->internal_name} = $value;
+        $user->profile->save(); 
+        
+    }
+    
     
     public function actionIndex()
     {
@@ -108,6 +120,7 @@ class AccountController extends BaseAccountController
 
         // Get Form Definition
         $definition = $user->profile->getFormDefinition();
+
         $definition['buttons'] = [
             'save' => [
                 'type' => 'submit',
@@ -122,185 +135,172 @@ class AccountController extends BaseAccountController
         if ($form->submitted('save') && $form->validate() && $form->save()) {
             // Trigger search refresh
             $user->save();
-
             $this->view->saved();
             return $this->redirect(['edit']);
         }
 
         return $this->render('edit', ['hForm' => $form, 'accountStatus' => $accountStatus,]);
     }
+
     public function actionEditInRegistration() {
         
         
-        $user = Yii::$app->user->getIdentity();
+        $user = Yii::$app->user->getIdentity();        
         $user->profile->scenario = 'editProfile';
-        /*$session = Yii::$app->session;
-        if (!$session->has('backPage')) {            
-            $session['backPage'] = 0;
+        
+        //handle with buttons "continue" and "save" 
+        $session = Yii::$app->session;  
+                    
+        if(isset($session['formDefinition'])){ 
+            $definition = $session['formDefinition'];    
+            $form = new HForm($definition, $user->profile);
+            if ($form->submitted('continuar') && $form->validate() && $form->save()) {            
+                
+                $user->save();                               
+                $session['backPage'] = false;
+                return $this->redirect(['edit-in-registration']);
+                
+            }
+            if ($form->submitted('salvar') && $form->validate() && $form->save()) {
+                // Trigger search refresh            
+               //$user->profile->actionBannerImageUploadsave();            
+
+                $this->view->saved();
+            
+               return $this->redirect(Yii::$app->user->returnUrl);
+            }
+        }
+        
+        
+        if (!$session->has('fieldID')) {
+            $fieldID = 27;
+            $session['backPage'] = false; 
+                         
         }
         else {
-            
-            $backPage = $session['backPage'];            
-            $profileField = $this->getProfileFieldById($backPage);
-                        
-            if ($backPage != 0 && $this->getProfileFieldById($backPage) == null) { 
-                $profileField = $this->getProfileFieldById($backPage-1);           
-        
-                if ($profileField != null) {
-                    //Defina o campo como null
-                    $user->profile->scenario = 'editProfile';
-                    $profileField = null;
-                
-                 //Salve as alterações no perfil
-                    $user->profile->save();        
-                }
+            if($session['backPage'] == false){
+                $fieldID = $session['fieldID'];            
+                $fieldID++; 
             }
-        }*/
-        
+            else{
+                $fieldID = $session['fieldID'] - 1;
+                while($this->getProfileFieldById($fieldID) == null){
+                    $fieldID--;
+                }                          
+                $this->setProfileFieldById($fieldID, null);
+            }
+                   
+                      
+        }
+        $fieldID = $fieldID == 35 ? 34 : $fieldID;
+        $fieldID = $fieldID == 26 ? 27 : $fieldID;       
+        $session['fieldID'] = $fieldID;        
+        $render = true;
 
-
-        $FieldId = null;
-        if($this->getProfileFieldById(27) == null) {
+        if($this->getProfileFieldById($fieldID) == null) {
+                
+            $definition = $user->profile->getFormDefinitionByField([$fieldID]);
             
-            $FieldId = 27;
-            $session['backPage'] = 27;
-            $definition = $user->profile->getFormDefinitionByField([27]);
-            
+            $nameButton = $fieldID == 34 ? 'salvar' : 'continuar';
             $definition['buttons'] = [
-                'continue' => [
+                $nameButton => [
                     'type' => 'submit',
-                    'label' => Yii::t('UserModule.account', 'Continue'),
+                    'label' => $nameButton,
                     'class' => 'btn btn-primary'
-                ],
-            ];
-        } 
-
-        
-
-        elseif($this->getProfileFieldById(28) == null) {
-            $session['backPage'] = 28;
-            $definition = $user->profile->getFormDefinitionByField([28]);
-            $FieldId = 28;
-            
-            $definition['buttons'] = [
-            'continue' => [
-                'type' => 'submit',
-                'label' => Yii::t('UserModule.account', 'Continue'),
-                'class' => 'btn btn-primary'
                     ],
             ];
-        }
-        elseif($this->getProfileFieldById(29) == null) {
-            $session['backPage'] = 29;
-            $definition = $user->profile->getFormDefinitionByField([29]);
-            $FieldId = 29;
+            Yii::debug(VarDumper::dumpAsString($definition, 10, true), 'edub');
+            $session['backPage'] = true; 
             
-            $definition['buttons'] = [
-            'continue' => [
-                'type' => 'submit',
-                'label' => Yii::t('UserModule.account', 'Continue'),
-                'class' => 'btn btn-primary'
-                            ],
-            ];
+            switch ($fieldID) {
+                case 27:
+                    $options['texts'] = [
+                        '1' => 'Selecione os próximos tópicos com atenção, pois eles vão ajudar a EduHub a gerar recomendações efetivas para você (as respostas selecionadas poderão ser editadas posteriormente no seu perfil)<br>',
+                        '2' => 'Selecione o que você é:',
+                        '3' => '<span style="color: red;">(Escolha apenas uma opção)</span>',
+                    ];
+                    break;
+                case 28:
+                    $options['texts'] = [
+                        '1' => 'O que lhe traz a EduHub?',
+                        '2' => '<span style="color: red;">(Escolha quantas opções quiser)</span>',
+                    ];
+                    break;
+                case 29:
+                    if(in_array('opt1', explode(' ', $user->profile->eduhub_profile_type))){
+                        $text1 = 'Em que estágio está a sua jornada empreendedora?';
+                    }
+                    else{
+                        $text1 = 'Para quais estágios da jornada empreendedora você oferece serviços?';
+                    }
+                    $options['texts'] = [
+                        '1' => $text1,
+                        '2' => '<span style="color: red;">(Escolha quantas opções quiser)</span>',
+                    ];
+                    break;
+                case 30:
+                    if(in_array('opt1', explode(' ', $user->profile->eduhub_profile_type))){
+                        $text1 = 'O seu perfil profissional é como você se identifica dentro de projetos em grupo.';
+                    }
+                    else{
+                        $text1 = 'Quais os perfis profissionais dos alunos que você ajuda nos seus serviços? (perfil profissional é como o aluno se identifica dentro de projetos em grupo)';
+                    }
+                    $options['texts'] = [
+                        '1' => $text1,
+                        '2' => '<span style="color: red;">(Escolha quantas opções quiser)</span>',
+                    ];                    
+                    break;
+                case 31:
+                        $options['texts'] = [
+                        '1' => 'Em quais tipos de negócio você tem interesse em atuar?',
+                        '2' => '<span style="color: red;">(Escolha quantas opções quiser)</span>',
+                    ];
+                    break;                        
+                case 32:
+                    $options['texts'] = [
+                        '1' => 'Quais temas relacionados a empreendedorismo são relevantes para você?',
+                        '2' => '<span style="color: red;">(Escolha quantas opções quiser)</span>',
+                    ];
+                    break;
+                case 33:   
+                    $options['texts'] = [
+                        '1' => 'Quando o assunto é tecnologia, o que lhe chama atenção?',
+                        '2' => '<span style="color: red;">(Escolha quantas opções quiser)</span>',
+                    ];
+                    $targetOpt = ['opt11', 'opt15', 'opt16'];
+                    $render = false;
+                    foreach($targetOpt as $target){
+                        if(strpos($user->profile->professional_personality, $target) !== false){
+                            $render = true;
+                            break;
+                        }
+                    }           
+                    break;  
+                case 34:
+                    $options['texts'] = [
+                        '1' => 'Quais tipos de mercado lhe interessam?',
+                        '2' => '<span style="color: red;">(Escolha quantas opções quiser)</span>',
+                    ];
+                    break;                                                      
+                default:
+                    $options=[];
+            }            
         }
-        //elseif(!isset($user->profile->professional_personality) && in_array('opt1', explode(' ', $user->profile->eduhub_profile_type))) {
-        elseif($this->getProfileFieldById(30) == null){
-            $session['backPage'] = 30;
-            $definition = $user->profile->getFormDefinitionByField([30]);
-            $FieldId = 30;
-            
-            $definition['buttons'] = [
-            'continue' => [
-                'type' => 'submit',
-                'label' => Yii::t('UserModule.account', 'Continue'),
-                'class' => 'btn btn-primary'
-            ],
-        ];
-        }
-        elseif($this->getProfileFieldById(31) == null) {
-            $session['backPage'] = 31;
-            $definition = $user->profile->getFormDefinitionByField([31]);
-            $FieldId = 31;
-            
-            $definition['buttons'] = [
-            'continue' => [
-                'type' => 'submit',
-                'label' => Yii::t('UserModule.account', 'Continue'),
-                'class' => 'btn btn-primary'
-            ],
-        ];
-        }
-        elseif($this->getProfileFieldById(32) == null) {
-            $session['backPage'] = 32;
-            $definition = $user->profile->getFormDefinitionByField([32]);
-            $FieldId = 32;
-            
-            $definition['buttons'] = [
-            'continue' => [
-                'type' => 'submit',
-                'label' => Yii::t('UserModule.account', 'Continue'),
-                'class' => 'btn btn-primary'
-            ],
-        ];
-        }
-        elseif($this->getProfileFieldById(33) == null) {
-            $session['backPage'] = 33;
-            $definition = $user->profile->getFormDefinitionByField([33]);
-            $FieldId = 33;
-            
-            $definition['buttons'] = [
-            'continue' => [
-                'type' => 'submit',
-                'label' => Yii::t('UserModule.account', 'Continue'),
-                'class' => 'btn btn-primary'
-            ],
-        ];
-        }
-        elseif($this->getProfileFieldById(34) == null) {
-            $session['backPage'] = 34;
-            $definition = $user->profile->getFormDefinitionByField([34]);
-            $FieldId = 34;
-            
-            $definition['buttons'] = [
-            'save' => [
-                'type' => 'submit',
-                'label' => Yii::t('UserModule.account', 'Save'),
-                'class' => 'btn btn-primary'
-            ],
-        ];
-        }
-/////////////////////////////  
-        
-        
-        
-        $form = new HForm($definition, $user->profile);
+        $session['formDefinition'] = $definition;
+        $form = new HForm($definition, $user->profile);        
         $form->showErrorSummary = true;
         $layout = '@humhub/modules/user/views/layouts/profileRegistrationLayout';
         
-        if ($form->submitted('continue') && $form->validate() && $form->save()) {
-            
-            
-            $user->profile->save(); 
-            
-            sleep(5);
-
-            //$this->view->saved();
-            
+              
+        if($render == true){
+            return $this->render('editInRegistration', ['hForm' => $form, 'layout' => $layout, 'optionsSended' => $options,]);    
+        }else{
+            $session['fieldID'] = $session['fieldID'] + 1;
+            $session['backPage'] = false;
             return $this->redirect(['edit-in-registration']);
         }
-        if ($form->submitted('save') && $form->validate() && $form->save()) {
-            // Trigger search refresh
-            
-            $user->profile->actionBannerImageUploadsave();
-            
-
-            $this->view->saved();
-            
-            return $this->redirect(Yii::$app->user->returnUrl);
-        }
-        
-        return $this->render('editInRegistration', ['hForm' => $form, 'layout' => $layout, 'fieldId' => $FieldId]);
     }    
+
     /**
      * Change Account
      *

@@ -10,6 +10,8 @@ namespace humhub\components;
 
 use Yii;
 use humhub\libs\WidgetCreateEvent;
+use yii\helpers\VarDumper;
+
 
 /**
  * @inheritdoc
@@ -58,6 +60,7 @@ class Widget extends \yii\base\Widget
         try {
             /* @var $widget Widget */
             $widget = Yii::createObject($config);
+            
             $out = '';
             if ($widget->beforeRun()) {
                 $result = (empty($widget->widgetLayout)) ?  $widget->run() : $widget->render($widget->widgetLayout, $widget->getLayoutViewParams());

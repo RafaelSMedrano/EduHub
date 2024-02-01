@@ -6,6 +6,7 @@ use Yii;
 use yii\db\ActiveQuery;
 use yii\helpers\Html;
 use yii\helpers\Url;
+use yii\helpers\VarDumper;
 
 /**
  * Abstract class for picker form fields.
@@ -245,19 +246,27 @@ abstract class BasePicker extends JsInputWidget
         // Prepare current selection and selection options
         $selection = [];
         $selectedOptions = $this->getSelectedOptions();
+        
         foreach ($selectedOptions as $id => $option) {
             $selection[$id] = $option['data-text'];
         }
 
         $options = $this->getOptions();
         $options['options'] = $selectedOptions;
+        $options['options'] = ['oi', 'tchau',];
+       
 
         if ($this->form != null) {
             return $this->form->field($this->model, $this->attribute)->dropDownList($selection, $options);
         } elseif ($this->model != null) {
+            Yii::debug('rastreandoNoBasePickeer Passou', VarDumper::dumpAsString(2, false));
             return Html::activeDropDownList($this->model, $this->attribute, $selection, $options);
         } else {
             $name = (!$this->name) ? 'pickerField' : $this->name;
+            
+            Yii::debug('rastreandoNoBasePickeer', VarDumper::dumpAsString($name, 2, false));
+            Yii::debug('rastreandoNoBasePickeer', VarDumper::dumpAsString($this->value, 2, false));
+            Yii::debug('rastreandoNoBasePickeer', VarDumper::dumpAsString($selection, 2, false));
             return Html::dropDownList($name, $this->value, $selection, $options);
         }
     }
@@ -279,16 +288,18 @@ abstract class BasePicker extends JsInputWidget
      * @return array
      */
     protected function getSelectedOptions()
+    
     {
         if (!$this->selection && $this->model != null) {
             $attribute = $this->attribute;
+            
             if (strrpos($attribute, '[') !== false) {
                 $this->selection = $this->loadItems(Html::getAttributeValue($this->model, $attribute));
             } else {
                 $this->selection = $this->loadItems($this->model->$attribute);
             }
         }
-
+        
 
         if (!$this->selection) {
             $this->selection = [];
@@ -299,9 +310,10 @@ abstract class BasePicker extends JsInputWidget
             if (!$item) {
                 continue;
             }
-
+            
             $result[$this->getItemKey($item)] = $this->buildItemOption($item);
         }
+        
         return $result;
     }
 
@@ -314,6 +326,7 @@ abstract class BasePicker extends JsInputWidget
      */
     protected function buildItemOption($item, $selected = true)
     {
+
         $result = [
             'data-id' => $this->getItemKey($item),
             'data-text' => $this->getItemText($item),
@@ -323,7 +336,7 @@ abstract class BasePicker extends JsInputWidget
         if ($selected) {
             $result['selected'] = 'selected';
         }
-
+        Yii::debug('rastreandoNoBasePickeer', VarDumper::dumpAsString($result, 2, false));
         return $result;
     }
 

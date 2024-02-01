@@ -53,8 +53,9 @@ use yii\base\Exception;
  * @property string $professional_personality
  * @property string $businesses_interests_type
  * @property string $entrepreneurship_topics_interests
+ * @property string $technology_interests
  * @property string $market_interests
- * @property string $tecnology_interests
+ * 
  * @property string $isRegistered
 
  * @property User $user

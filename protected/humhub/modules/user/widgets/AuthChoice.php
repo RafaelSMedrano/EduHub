@@ -71,7 +71,6 @@ class AuthChoice extends \yii\authclient\widgets\AuthChoice
     public static function hasClients()
     {
         $authClients = self::filterClients(Yii::$app->get(self::$authclientCollection)->getClients());
-
         return count($authClients) > 0;
     }
 
@@ -84,7 +83,6 @@ class AuthChoice extends \yii\authclient\widgets\AuthChoice
     {
         $result = [];
         foreach ($clients as $client) {
-
             // Don't show clients which need login form
             if (!$client instanceof \humhub\modules\user\authclient\BaseFormAuth) {
                 $result[] = $client;

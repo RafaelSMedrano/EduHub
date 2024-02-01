@@ -142,6 +142,7 @@ class HForm extends \yii\base\Component
     public function render($form)
     {
         $this->form = $form;
+        
 
         $this->trigger(static::EVENT_BEFORE_RENDER);
 
@@ -153,9 +154,12 @@ class HForm extends \yii\base\Component
 
     public function renderElements($elements, $forms = [])
     {
+        
         $output = "";
         foreach ($elements as $name => $element) {
-            if (isset($element['type']) && $element['type'] == 'form') {
+            
+            if (isset($element['type']) && $element['type'] == 'form') {//Esse if é pra renderiza pg com várias entradas 
+                
                 $forms[] = $name;
                 if (isset($element['elements']) && count($element['elements']) > 0) {
                     $output .= $this->renderForm($element); //retorna uma tag $output = "<fieldset class='" . $class . "'>"estiliza o form
@@ -180,7 +184,7 @@ class HForm extends \yii\base\Component
 
         $output = "<fieldset class='" . $class . "'>";
         if(isset($element['question'])) {
-            sleep(20);
+            
             $output .= "<legend>" . $element['question'] . "</legend>";
         }
         elseif(isset($element['title']) && !isset($element['question'])) {
@@ -231,7 +235,7 @@ class HForm extends \yii\base\Component
         }
 
         if ($model) {
-            $options = $this->getOptionsFromDefinition($definition);
+            $options = $this->getOptionsFromDefinition($definition);//retorna $options = array_merge($options, $definition['htmlOptions']);
 
             if (isset($model->$name, $options['value'])) {
                 unset($options['value']);
@@ -259,12 +263,13 @@ class HForm extends \yii\base\Component
                         $field = $this->form->field($model, $name)->checkbox($options);
                         break;
                     case 'checkboxlist':
+                        
                         if (isset($options['readOnly']) && $options['readOnly']) {
                             $options['itemOptions']['disabled'] = 'disabled';
                         }
 
                         $value = $model->$name;
-
+                        
                         if (is_string($value)) {
                             $delimiter = isset($definition['delimiter']) ? $definition['delimiter'] : ',';
                             $model->$name = explode($delimiter, $model->$name);
