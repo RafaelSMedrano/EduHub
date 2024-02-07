@@ -1,10 +1,10 @@
-a:2:{i:0;s:1055:"
+a:2:{i:0;s:1057:"
 
 <a href="/index.php?r=activity%2Flink&id=268">
 
     <div class="media">
                     <!-- Show user image -->
-            <span class="pull-left has-online-status img-size-medium"><img class="media-object img-rounded" src="/uploads/profile_image/14a96f4d-e624-4286-b407-7ee645460992.jpg?m=1707177440" width="32" alt="Foto de perfil de Paulo Henrique Mascarenhas" style="width: 32px; height: 32px" data-contentcontainer-id="210"><span class="tt user-online-status user-is-online" title="Online"></span></span>        
+            <span class="pull-left has-online-status img-size-medium"><img class="media-object img-rounded" src="/uploads/profile_image/14a96f4d-e624-4286-b407-7ee645460992.jpg?m=1707328321" width="32" alt="Foto de perfil de Paulo Henrique Mascarenhas" style="width: 32px; height: 32px" data-contentcontainer-id="210"><span class="tt user-online-status user-is-offline" title="Offline"></span></span>        
         <!-- Show space image, if you are outside from a space -->
                     
         
