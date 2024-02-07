@@ -13,6 +13,7 @@ use Yii;
 use humhub\modules\content\components\ContentContainerActiveRecord;
 use humhub\modules\ui\form\widgets\BasePicker;
 use humhub\modules\content\models\ContentTag;
+use yii\helpers\VarDumper;
 
 /**
  * This InputWidget provides a generic ContentTag Dropdown
@@ -48,8 +49,14 @@ class ContentTagPicker extends BasePicker
     }
 
     protected function findDefaults()
-    {
-        $query = call_user_func([$this->itemClass, 'findByContainer'], $this->contentContainer, true)
+    {  
+        //$query = call_user_func([$this->itemClass, 'findByContainer'], $this->contentContainer, true)
+           // ->limit($this->limit);
+        
+
+           ////criei em 06/02/2024, vale pra que os topics sejam os mesmos em todos os lugares. O código acima é o original (com a function 'findByContainer' no lugar de 'getMainTopics') e seleciona os tópicos pra spaces e usuários diferentes
+
+           $query = call_user_func([$this->itemClass, 'getMainTopics'], $this->contentContainer, true)
             ->limit($this->limit);
 
         return Yii::$app->runtimeCache->getOrSet(__METHOD__ . $this->id, function() use ($query) {
@@ -58,8 +65,9 @@ class ContentTagPicker extends BasePicker
     }
 
     public static function search($term, $contentContainer = null, $includeGlobal = false)
-    {
+    {   
         $instance = new static();
+        
         $query = call_user_func([$instance->itemClass, 'find']);
         if(!empty($term)) {
             $query->andWhere(['like', 'content_tag.name', $term]);
@@ -68,18 +76,19 @@ class ContentTagPicker extends BasePicker
     }
 
     public static function searchByContainer($term, $contentContainer, $includeGlobal = true)
-    {
+    {   
         if(!$contentContainer) {
             return static::search($term);
         }
 
         $instance = new static();
+        Yii::debug('rastreandoNoTagPickeer', VarDumper::dumpAsString($instance->itemClass, 2, false));
         $query = call_user_func([$instance->itemClass, 'findByContainer'], $contentContainer, $includeGlobal);
 
         if(!empty($term)) {
             $query->andWhere(['like','content_tag.name', $term]);
         }
-
+        
         return static::jsonResult($query->limit($instance->limit)->all());
     }
 

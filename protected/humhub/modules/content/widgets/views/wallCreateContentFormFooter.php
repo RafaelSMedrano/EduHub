@@ -39,10 +39,11 @@ use yii\helpers\Html;
             'placeholder' => Yii::t('ContentModule.base', 'Add a member to notify'),
     ])  ?>
     </div>
-    <?= Html::hiddenInput('state', Content::STATE_PUBLISHED) ?>
+         
 <?php if (TopicPicker::showTopicPicker($contentContainer)) : ?>
     <div id="postTopicContainer" class="form-group" style="margin-top:15px;">
         <!-- 28/01 retirei o style="display:none" para que o campo seja exibido sem a necessidade de js -->  
+        
         <?= TopicPicker::widget([
             'id' => 'postTopicInput',
             'name' => 'postTopicInput',

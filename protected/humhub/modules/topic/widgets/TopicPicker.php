@@ -15,6 +15,7 @@ use humhub\modules\content\widgets\ContentTagPicker;
 use humhub\modules\topic\models\Topic;
 use Yii;
 use yii\helpers\Url;
+use yii\helpers\VarDumper;
 
 /**
  * This InputWidget class can be used to add a topic picker input field. The topic picker field is only
@@ -41,9 +42,9 @@ class TopicPicker extends ContentTagPicker
      * @inheritdoc
      */
     public function init()
-    {
+    {   Yii::debug('rastreandoNoTopicPicker', VarDumper::dumpAsString($this->contentContainer, 2, false));
         $this->contentContainer = $this->contentContainer ?: ContentContainerHelper::getCurrent();
-
+        
         if (!$this->url && $this->contentContainer) {
             $this->url = $this->contentContainer->createUrl('/topic/topic/search');
         } else {

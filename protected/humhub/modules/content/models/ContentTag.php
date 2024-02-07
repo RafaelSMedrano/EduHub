@@ -596,6 +596,21 @@ class ContentTag extends ActiveRecord
      * @internal param ContentContainerActiveRecord|int $record Container instance or contentcontainer_id
      * @internal param null $type
      */
+
+     //criei em 06/02/2024, vale pra que os topics sejam os mesmos em todos os lugares. a findByContainer é a original e seleciona os tópicos pra spaces e usuários diferentes
+    public static function getMainTopics($container, $includeGlobal = false)
+    {
+        $container_id = $container instanceof ContentContainerActiveRecord ? $container->contentcontainer_id : $container;
+
+        if(!$includeGlobal) {
+            return static::find()->andWhere(['content_tag.contentcontainer_id' => 1]);
+        } else {
+            return static::find()->andWhere(['or',
+                ['content_tag.contentcontainer_id' => 1],
+                'content_tag.contentcontainer_id IS NULL',
+            ]);
+        }
+    }
     public static function findByContainer($container, $includeGlobal = false)
     {
         $container_id = $container instanceof ContentContainerActiveRecord ? $container->contentcontainer_id : $container;

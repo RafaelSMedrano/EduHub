@@ -253,20 +253,23 @@ abstract class BasePicker extends JsInputWidget
 
         $options = $this->getOptions();
         $options['options'] = $selectedOptions;
-        $options['options'] = ['oi', 'tchau',];
+        
+        
        
 
         if ($this->form != null) {
             return $this->form->field($this->model, $this->attribute)->dropDownList($selection, $options);
         } elseif ($this->model != null) {
-            Yii::debug('rastreandoNoBasePickeer Passou', VarDumper::dumpAsString(2, false));
+            
             return Html::activeDropDownList($this->model, $this->attribute, $selection, $options);
         } else {
             $name = (!$this->name) ? 'pickerField' : $this->name;
             
-            Yii::debug('rastreandoNoBasePickeer', VarDumper::dumpAsString($name, 2, false));
-            Yii::debug('rastreandoNoBasePickeer', VarDumper::dumpAsString($this->value, 2, false));
-            Yii::debug('rastreandoNoBasePickeer', VarDumper::dumpAsString($selection, 2, false));
+            //Yii::debug('rastreandoNoBasePickeer', VarDumper::dumpAsString($name, 2, false));
+            //Yii::debug('rastreandoNoBasePickeer', VarDumper::dumpAsString($this->value, 2, false));
+            //Yii::debug('rastreandoNoBasePickeer', VarDumper::dumpAsString($selection, 2, false));
+            //Yii::debug('rastreandoNoBasePickeer', VarDumper::dumpAsString($options, 4, false));
+            //Yii::debug('rastreandoNoBasePickeer', VarDumper::dumpAsString(Html::dropDownList($name, $this->value, $selection, $options), 2, false));
             return Html::dropDownList($name, $this->value, $selection, $options);
         }
     }
@@ -290,6 +293,7 @@ abstract class BasePicker extends JsInputWidget
     protected function getSelectedOptions()
     
     {
+        
         if (!$this->selection && $this->model != null) {
             $attribute = $this->attribute;
             
@@ -336,7 +340,7 @@ abstract class BasePicker extends JsInputWidget
         if ($selected) {
             $result['selected'] = 'selected';
         }
-        Yii::debug('rastreandoNoBasePickeer', VarDumper::dumpAsString($result, 2, false));
+        
         return $result;
     }
 

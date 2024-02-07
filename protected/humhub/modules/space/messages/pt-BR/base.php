@@ -112,7 +112,7 @@ return [
     'Space Visibility' => 'Visibilidade do Espaço',
     'Space directory' => 'Espaço',
     'Space is invisible!' => 'Espaço está invisível!',
-    'Spaces' => 'Comunidades',
+    'Spaces' => 'Comunidades da EduHub',
     'Status' => 'Status',
     'Stream' => 'Stream',
     'Tags' => 'Tags',

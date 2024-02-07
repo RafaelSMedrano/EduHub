@@ -13,6 +13,7 @@ use yii\base\Model;
 use yii\db\ActiveRecordInterface;
 use yii\validators\StringValidator;
 use yii\web\Request;
+use yii\helpers\VarDumper;
 
 /**
  * BaseHtml provides concrete implementation for [[Html]].
@@ -840,11 +841,18 @@ class BaseHtml
     public static function dropDownList($name, $selection = null, $items = [], $options = [])
     {
         if (!empty($options['multiple'])) {
+           // Yii::debug('rastreandoNoBaseHTML', VarDumper::dumpAsString($name, 2, false));
+            //Yii::debug('rastreandoNoBaseHTML', VarDumper::dumpAsString($selection, 2, false));
+            //Yii::debug('rastreandoNoBaseHTML', VarDumper::dumpAsString($items, 2, false));
+            //Yii::debug('rastreandoNoBaseHTML', VarDumper::dumpAsString($options, 2, false));
+            
             return static::listBox($name, $selection, $items, $options);
         }
+        //Topic não vem pra cá
         $options['name'] = $name;
         unset($options['unselect']);
         $selectOptions = static::renderSelectOptions($selection, $items, $options);
+        
         return static::tag('select', "\n" . $selectOptions . "\n", $options);
     }
 
@@ -899,7 +907,8 @@ class BaseHtml
      * @return string the generated list box tag
      */
     public static function listBox($name, $selection = null, $items = [], $options = [])
-    {
+    {   //Yii::debug('rastreandoNoBaseHTML', VarDumper::dumpAsString($name, 2, false));
+        //Yii::debug('rastreandoNoBaseHTML', VarDumper::dumpAsString($options, 2, false));
         if (!array_key_exists('size', $options)) {
             $options['size'] = 4;
         }
@@ -908,6 +917,7 @@ class BaseHtml
         }
         $options['name'] = $name;
         if (isset($options['unselect'])) {
+            
             // add a hidden field so that if the list box has no option being selected, it still submits a value
             if (!empty($name) && substr_compare($name, '[]', -2, 2) === 0) {
                 $name = substr($name, 0, -2);
@@ -923,6 +933,7 @@ class BaseHtml
             $hidden = '';
         }
         $selectOptions = static::renderSelectOptions($selection, $items, $options);
+        
         return $hidden . static::tag('select', "\n" . $selectOptions . "\n", $options);
     }
 

@@ -14,6 +14,7 @@ use humhub\modules\file\handler\FileHandlerCollection;
 use humhub\modules\space\models\Space;
 use Yii;
 use yii\web\HttpException;
+use yii\helpers\VarDumper;
 
 /**
  * WallCreateContentFormFooter is the footer options widget under create content forms on Stream/Wall.
@@ -59,7 +60,7 @@ class WallCreateContentFormFooter extends Widget
      */
     public function run()
     {   
-        
+        Yii::debug('rastreandoNoFooter', VarDumper::dumpAsString($this->contentContainer, 2, false));
         return $this->render('@humhub/modules/content/widgets/views/wallCreateContentFormFooter', [
             'contentContainer' => $this->contentContainer,
             'submitUrl' => $this->contentContainer->createUrl($this->submitUrl),

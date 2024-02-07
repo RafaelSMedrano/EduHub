@@ -1,11 +1,12 @@
 <?php
 
 namespace humhub\widgets;
-
+use Yii;
 use humhub\components\Widget;
 use humhub\libs\Html;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
+use yii\helpers\VarDumper;
 
 /**
  * Description of JsWidget
@@ -97,11 +98,12 @@ class JsWidget extends Widget
         $attributes = $this->getAttributes();
         $attributes['data'] = $this->getData();
         $attributes['id'] = $this->getId();
+        Yii::debug('rastreandoNoJSAtributes', VarDumper::dumpAsString($attributes, 4, false));
 
         $this->setDefaultOptions();
 
         $result = ArrayHelper::merge($attributes, $this->options);
-
+        Yii::debug('rastreandoNoJSResult', VarDumper::dumpAsString($result, 4, false));
         if (!$this->visible) {
             Html::addCssStyle($result, 'display:none');
         }

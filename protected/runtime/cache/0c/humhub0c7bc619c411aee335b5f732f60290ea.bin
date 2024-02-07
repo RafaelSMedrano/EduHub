@@ -1,20 +1,19 @@
-a:2:{i:0;s:1429:"
+a:2:{i:0;s:977:"
 
-<a href="/index.php?r=activity%2Flink&id=235">
+<a href="/index.php?r=activity%2Flink&id=267">
 
     <div class="media">
                     <!-- Show user image -->
-            <span class="pull-left has-online-status img-size-medium"><img class="media-object img-rounded" src="/static/img/default_user.jpg" width="32" alt="Foto de perfil de affsaafreetre teretuo" style="width: 32px; height: 32px" data-contentcontainer-id="201"><span class="tt user-online-status user-is-offline" title="Offline"></span></span>        
+            <span class="pull-left has-online-status img-size-medium"><img class="media-object img-rounded" src="/uploads/profile_image/036c3afd-8766-4a58-9071-229825ca2044.jpg?m=1707259722" width="32" alt="Foto de perfil de Rafael Medrano" style="width: 32px; height: 32px" data-contentcontainer-id="1"><span class="tt user-online-status user-is-online" title="Online"></span></span>        
         <!-- Show space image, if you are outside from a space -->
-                                    <div class="img-space pull-left space-profile-acronym-1 space-acronym" style=" background-color: #6fdbe8; width: 20px; height: 20px; font-size: 8.8px; padding: 3.6px 0; border-radius: 2px;" data-contentcontainer-id="2">WS</div><img class="img-space pull-left space-profile-image-1 img-rounded profile-user-photo hidden" src="/static/img/default_space.jpg" alt="Welcome Space" style=" width: 20px; height: 20px" data-contentcontainer-id="2">            
         
         <div class="media-body text-break">
 
             <!-- Show content -->
-            <strong>affsaafreetre teretuo</strong> entrou no espaço <strong>Welcome Space</strong>            <br>
+            <strong>Rafael Medrano</strong> entrou neste espaço.            <br>
 
             <!-- show time -->
-            <time class="tt time timeago" datetime="2024-01-19T11:55:02-03:00" title="Jan 19, 2024 - 11:55 AM">Jan 19, 2024</time>        </div>
+            <time class="tt time timeago" data-ui-addition="timeago" datetime="2024-02-06T19:47:24-03:00" title="Feb 6, 2024 - 7:47 PM">Feb 6, 2024 - 7:47 PM</time>        </div>
     </div>
 
 </a>

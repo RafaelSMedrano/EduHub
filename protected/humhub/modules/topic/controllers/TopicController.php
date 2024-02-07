@@ -15,6 +15,8 @@ use humhub\modules\topic\models\forms\ContentTopicsForm;
 use humhub\modules\topic\widgets\TopicPicker;
 use Yii;
 use yii\web\HttpException;
+use yii\helpers\VarDumper;
+
 
 class TopicController extends ContentContainerController
 {
@@ -32,9 +34,14 @@ class TopicController extends ContentContainerController
             ['json']
         ];
     }
+    //public function actionGetOptions(){
+      //  $options[]
+
+    //}
+    
 
     public function actionSearch($keyword)
-    {
+    {   Yii::debug('rastreandoNoTopicController', 2, false);
         return $this->contentContainer
             ? TopicPicker::searchByContainer($keyword, $this->contentContainer)
             : TopicPicker::search($keyword);
