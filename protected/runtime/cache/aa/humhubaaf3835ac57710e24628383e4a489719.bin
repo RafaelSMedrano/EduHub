@@ -3,7 +3,7 @@ a:2:{i:0;s:957:"
 
     <div class="media">
                     <!-- Show user image -->
-            <span class="pull-left has-online-status img-size-medium"><img class="media-object img-rounded" src="/uploads/profile_image/14a96f4d-e624-4286-b407-7ee645460992.jpg?m=1707177440" width="32" alt="Foto de perfil de Paulo Henrique Mascarenhas" style="width: 32px; height: 32px" data-contentcontainer-id="210"><span class="tt user-online-status user-is-online" title="Online"></span></span>        
+            <span class="pull-left has-online-status img-size-medium"><img class="media-object img-rounded" src="/uploads/profile_image/14a96f4d-e624-4286-b407-7ee645460992.jpg?m=1707328321" width="32" alt="Foto de perfil de Paulo Henrique Mascarenhas" style="width: 32px; height: 32px" data-contentcontainer-id="210"><span class="tt user-online-status user-is-online" title="Online"></span></span>        
         <!-- Show space image, if you are outside from a space -->
         
         <div class="media-body text-break">
@@ -12,7 +12,7 @@ a:2:{i:0;s:957:"
             <strong>Paulo Henrique Mascarenhas</strong> criou este espaço.            <br>
 
             <!-- show time -->
-            <time class="tt time timeago" data-ui-addition="timeago" datetime="2024-02-07T13:17:08-03:00" title="7 de fev. de 2024 - 13:17">7 de fev. de 2024 - 13:17</time>        </div>
+            <time class="tt time timeago" data-ui-addition="timeago" datetime="2024-02-06T17:39:06-03:00" title="6 de fev. de 2024 - 17:39">6 de fev. de 2024 - 17:39</time>        </div>
     </div>
 
 ";i:1;N;}

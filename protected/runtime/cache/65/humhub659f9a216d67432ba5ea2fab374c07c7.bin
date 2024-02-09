@@ -1,0 +1,9 @@
+a:2:{i:0;a:1:{i:2;a:1:{i:0;O:37:"humhub\modules\comment\models\Comment":2:{s:10:"attributes";a:8:{s:2:"id";i:14;s:7:"message";s:40:"**Kkkkkkkkk**
+
+# Pizza 
+
+Calabresas ";s:12:"object_model";s:31:"humhub\modules\post\models\Post";s:9:"object_id";i:24;s:10:"created_at";s:19:"2024-02-07 19:21:03";s:10:"created_by";i:209;s:10:"updated_at";s:19:"2024-02-07 19:21:03";s:10:"updated_by";i:209;}s:13:"oldAttributes";a:8:{s:2:"id";i:14;s:7:"message";s:40:"**Kkkkkkkkk**
+
+# Pizza 
+
+Calabresas ";s:12:"object_model";s:31:"humhub\modules\post\models\Post";s:9:"object_id";i:24;s:10:"created_at";s:19:"2024-02-07 19:21:03";s:10:"created_by";i:209;s:10:"updated_at";s:19:"2024-02-07 19:21:03";s:10:"updated_by";i:209;}}}}i:1;N;}

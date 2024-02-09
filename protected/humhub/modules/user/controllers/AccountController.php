@@ -131,7 +131,7 @@ class AccountController extends BaseAccountController
 
         $form = new HForm($definition, $user->profile);
         $form->showErrorSummary = true;
-        $accountStatus = 'registered';
+        
         if ($form->submitted('save') && $form->validate() && $form->save()) {
             // Trigger search refresh
             $user->save();
@@ -139,7 +139,7 @@ class AccountController extends BaseAccountController
             return $this->redirect(['edit']);
         }
 
-        return $this->render('edit', ['hForm' => $form, 'accountStatus' => $accountStatus,]);
+        return $this->render('edit', ['hForm' => $form]);
     }
 
     public function actionEditInRegistration() {
