@@ -23,6 +23,7 @@ use Yii;
 use yii\web\ForbiddenHttpException;
 use yii\web\HttpException;
 use yii\web\NotFoundHttpException;
+use yii\helpers\VarDumper;
 
 /**
  * @since 0.5
@@ -69,14 +70,15 @@ class PostController extends ContentContainerController
     public function actionPost()
     {
         $post = new Post($this->contentContainer);
-
+        
         // Check createPost Permission
         if (!$post->content->canEdit()) {
+            
             return [];
         }
 
         $post->load(Yii::$app->request->post(), 'Post');
-
+        //Yii::debug('rastreandoNoPost', VarDumper::dumpAsString($post, 4, false));
         return Post::getDb()->transaction(function ($db) use ($post) {
             return WallCreateContentForm::create($post, $this->contentContainer);
         });

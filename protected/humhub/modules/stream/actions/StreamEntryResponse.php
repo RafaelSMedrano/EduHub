@@ -12,6 +12,7 @@ use yii\web\Response;
 use humhub\modules\content\models\Content;
 use humhub\modules\content\widgets\stream\StreamEntryOptions;
 use humhub\modules\content\widgets\stream\StreamEntryWidget;
+use yii\helpers\VarDumper;
 
 /**
  * This class is used to build the stream entry array or json response used in stream actions.
@@ -79,7 +80,7 @@ class StreamEntryResponse extends Model
         }
 
         $streamEntry = StreamEntryWidget::renderStreamEntry($model, $renderOptions, $widgetOptions);
-
+        Yii::debug('rastreandoNoStreamEnterResponse', VarDumper::dumpAsString($streamEntry, 2, false));
         return (new static([
             'id' => $content->id,
             'guid' => $content->guid,

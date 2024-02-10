@@ -20,6 +20,7 @@ use humhub\modules\content\components\ContentContainerActiveRecord;
 use humhub\modules\content\components\ContentActiveRecord;
 use Yii;
 use yii\web\HttpException;
+use yii\helpers\VarDumper;
 
 /**
  * WallCreateContentForm is the base widget to create  "quick" create content forms above Stream/Wall.
@@ -137,6 +138,7 @@ abstract class WallCreateContentForm extends Widget
             }
 
             $record->fileManager->attach(Yii::$app->request->post('fileList'));
+            //Yii::debug('rastreandoNoContentForm', VarDumper::dumpAsString(StreamEntryResponse::getAsArray($record->content), 2, false));
             return StreamEntryResponse::getAsArray($record->content);
         }
 

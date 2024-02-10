@@ -108,7 +108,7 @@ class SpaceController extends ContentContainerController
     }
 
     /**
-     * Follows a Space
+     * Follows a Space Teste
      */
     public function actionFollow()
     {

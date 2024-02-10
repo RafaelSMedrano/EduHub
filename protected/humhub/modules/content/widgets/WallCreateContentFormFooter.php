@@ -60,7 +60,7 @@ class WallCreateContentFormFooter extends Widget
      */
     public function run()
     {   
-        Yii::debug('rastreandoNoFooter', VarDumper::dumpAsString($this->contentContainer, 2, false));
+        //Yii::debug('rastreandoNoFooter', VarDumper::dumpAsString($this->contentContainer->createUrl($this->submitUrl), 2, false));
         return $this->render('@humhub/modules/content/widgets/views/wallCreateContentFormFooter', [
             'contentContainer' => $this->contentContainer,
             'submitUrl' => $this->contentContainer->createUrl($this->submitUrl),
