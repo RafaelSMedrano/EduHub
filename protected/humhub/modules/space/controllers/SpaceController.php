@@ -29,7 +29,7 @@ use yii\db\Expression;
  *
  * @property-read Space $contentContainer
  *
- * @author Luke
+ * @author Luke teste
  * @package humhub.modules_core.space.controllers
  * @since 0.5 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
  */
