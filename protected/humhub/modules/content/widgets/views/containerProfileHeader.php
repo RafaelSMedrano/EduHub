@@ -46,11 +46,6 @@ $profileImageHeight = $container->getProfileImage()->height();
         <!-- profile image output-->
         <?= $container->getProfileBannerImage()->render('width:100%', ['class' => 'img-profile-header-background']) ?>
 
-        <!-- show user name and title -->
-        <div class="img-profile-data">
-            <h1 class="<?= $classPrefix ?>"><?= Html::encode($title) ?></h1>
-            <h2 class="<?= $classPrefix ?>"><?= Html::encode($subTitle) ?></h2>
-        </div>
 
         <?php if ($canEdit) : ?>
             <div class="image-upload-loader" style="padding:<?= $bannerProgressBarPadding ?>">
@@ -98,7 +93,11 @@ $profileImageHeight = $container->getProfileImage()->height();
 
     </div>
 </div>
-
+<!-- show user name and title -->
+<div class="img-profile-data">
+        <h1 class="<?= $classPrefix ?>"><?= Html::encode($title) ?></h1>
+        <h2 class="<?= $classPrefix ?>"><?= Html::encode($subTitle) ?></h2>
+</div>
 <?= $this->render($headerControlView, [
     'container' => $container
 ]) ?>
