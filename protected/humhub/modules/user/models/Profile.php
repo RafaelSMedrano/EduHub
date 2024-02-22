@@ -287,7 +287,7 @@ class Profile extends ActiveRecord
 
 
 
-        foreach (ProfileFieldCategory::find()->orderBy('sort_order')->where(['id' => 4])->all() as $profileFieldCategory) {
+        foreach (ProfileFieldCategory::find()->orderBy('sort_order')->where(['id' => [4, 5]])->all() as $profileFieldCategory) {
             //originalmente existia o loop sem ->where(['id' => 4]) e pegava todas as categorias, colocando uma aba pra cada. Agora só está sob a categoria "eduhub"
             $category = [
                 'type' => 'form',

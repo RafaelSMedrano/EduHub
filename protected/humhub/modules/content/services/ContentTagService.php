@@ -41,7 +41,9 @@ class ContentTagService
     public function addTag(ContentTag $tag)
     {
         //no if, troquei $this->content->contentcontainer_id para 1, para que o post possa aceitar os tópicos do user 1(adm) em todos os lugares.
-        if (!empty($tag->contentcontainer_id) && $tag->contentcontainer_id != 1) {
+        // 21/02/2024 deixei ($tag->contentcontainer_id != 1 && $tag->contentcontainer_id != $this->content->contentcontainer_id) para que
+        // os usuários tbm possam criar seus próprios tópicos na hora de postar. 
+        if (!empty($tag->contentcontainer_id) && ($tag->contentcontainer_id != 1 && $tag->contentcontainer_id != $this->content->contentcontainer_id)) {
             throw new InvalidArgumentException(
                 Yii::t('ContentModule.base', 'Content Tag with invalid contentcontainer_id assigned.')
             );

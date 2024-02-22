@@ -40,7 +40,7 @@ if ($user !== null && $user->profile !== null) {
 <?php endif; ?>
 
 
-?>
+
 
 
 

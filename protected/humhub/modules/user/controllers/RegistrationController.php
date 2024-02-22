@@ -63,7 +63,10 @@ class RegistrationController extends Controller
             ) {
                 return $this->redirect($linkRegistrationService->getSpace()->getUrl());
             }
-            
+            $user = Yii::$app->user->getIdentity();
+            $user->profile->scenario = 'editProfile';
+            $user->profile->isRegistering=false;
+            $user->profile->save(); 
             throw new HttpException(401, 'Você já está logado! Termine de editar seu perfil nas configurações.');
             
         }

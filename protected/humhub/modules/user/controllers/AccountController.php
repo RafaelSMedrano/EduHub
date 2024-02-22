@@ -43,7 +43,7 @@ class AccountController extends BaseAccountController
      * @inheritdoc
      */
     protected $doNotInterceptActionIds = ['delete'];
-    public $layout = "@humhub/modules/user/views/layouts/profileRegistrationLayout";
+    public $layout = null;
     
     
     
@@ -164,10 +164,11 @@ class AccountController extends BaseAccountController
             if ($form->submitted('salvar') && $form->validate() && $form->save()) {
                 // Trigger search refresh            
                //$user->profile->actionBannerImageUploadsave();            
-
+                $user->profile->isRegistering=false;
+                $user->profile->save(); 
                 $this->view->saved();
-            
-               return $this->redirect(Yii::$app->user->returnUrl);
+                
+                return $this->redirect(Yii::$app->user->returnUrl);
             }
         }
         
@@ -225,6 +226,7 @@ class AccountController extends BaseAccountController
                         '1' => 'O que lhe traz a EduHub?',
                         '2' => '<span style="color: red;">(Escolha quantas opções quiser)</span>',
                     ];
+                    $render = false;
                     break;
                 case 29:
                     if(in_array('opt1', explode(' ', $user->profile->eduhub_profile_type))){
@@ -289,11 +291,11 @@ class AccountController extends BaseAccountController
         $session['formDefinition'] = $definition;
         $form = new HForm($definition, $user->profile);        
         $form->showErrorSummary = true;
-        $layout = '@humhub/modules/user/views/layouts/profileRegistrationLayout';
+        $this->layout = '@humhub/modules/user/views/layouts/profileRegistrationLayout';
         
               
         if($render == true){
-            return $this->render('editInRegistration', ['hForm' => $form, 'layout' => $layout, 'optionsSended' => $options,]);    
+            return $this->render('editInRegistration', ['hForm' => $form,'optionsSended' => $options,]);    
         }else{
             $session['fieldID'] = $session['fieldID'] + 1;
             $session['backPage'] = false;
