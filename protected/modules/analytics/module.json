@@ -1,0 +1,36 @@
+{
+  "id": "analytics",
+  "name": "Analytics",
+  "description": "Statistics about Humhub usage (globally, in spaces and about users).",
+  "keywords": [
+    "statistics",
+    "analytics",
+    "activity"
+  ],
+  "version": "2.1.1",
+  "humhub": {
+    "minVersion": "1.12"
+  },
+  "homepage": "https://cuzy.app",
+  "authors": [
+    {
+      "name": "Marc FARRE",
+      "homepage": "https://marc.fun",
+      "role": "Developer"
+    }
+  ],
+  "screenshots": [
+    "resources/screen_1.png",
+    "resources/screen_2.png",
+    "resources/screen_3.png",
+    "resources/screen_4.png",
+    "resources/screen_5.png",
+    "resources/screen_6.png",
+    "resources/screen_7.png",
+    "resources/screen_8.png",
+    "resources/screen_9.png",
+    "resources/screen_10.png",
+    "resources/screen_11.png",
+    "resources/screen_12.png"
+  ]
+}

@@ -1,11 +1,22 @@
 Changelog
 =========
 
+1.5.9 (March 14, 2024)
+----------------------
+- Fix #443: Fix email subject on invite/add users
+- Fix #447: Global calendar header redesign
+- Enh #440: Extend list of fields for updating of sequence
+- Fix #453: Profile Calendar not available when adding an event from the global Calendar when the module is enabled in the profile
+- Enh #457: Strikethrough cancelled events in calendar view
+- Enh #460: Add cancelled status in ICS files
+- Fix #402: Fix layout after change page of participants list
+- Fix #469: Space configuration checks permissions insufficiently 
+
 1.5.8 (January 19, 2024)
 ------------------------
 - Fix #437: Hide the profile calendar if the module is not available for users
 - Fix #439: Attach ICS files to "forced invites"
- -Fix #441: Send event update notification to invitees
+  -Fix #441: Send event update notification to invitees
 - Fix #434: Fix adding of all space members with status
 
 1.5.7 (January 12, 2024)

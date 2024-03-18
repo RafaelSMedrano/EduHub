@@ -29,6 +29,7 @@ use humhub\modules\admin\components\Controller;
 use humhub\modules\admin\models\Log;
 use humhub\modules\notification\models\forms\NotificationSettings;
 use yii\base\BaseObject;
+use yii\helpers\VarDumper;
 
 /**
  * SettingController
@@ -178,9 +179,11 @@ class SettingController extends Controller
      * E-Mail Mailing Settings
      */
     public function actionMailingServer()
-    {
+    {   Yii::debug(VarDumper::dumpAsString('teste', 3, true), 'RastreandoNoMailerTest');
         $form = new MailingSettingsForm;
+        Yii::debug(VarDumper::dumpAsString('teste', 3, true), 'RastreandoNoMailerTest');
         if ($form->load(Yii::$app->request->post()) && $form->validate() && $form->save()) {
+            
             return $this->redirect(['/admin/setting/mailing-server-test']);
         }
 
@@ -193,12 +196,14 @@ class SettingController extends Controller
     public function actionMailingServerTest()
     {
         /** @var User $user */
+        
         $user = Yii::$app->user->getIdentity();
-
+        
         try {
             $mail = Yii::$app->mailer->compose(['html' => '@humhub/views/mail/TextOnly'], [
                 'message' => Yii::t('AdminModule.settings', 'Test message')
             ]);
+            
             $mail->setTo($user->email);
             $mail->setSubject(Yii::t('AdminModule.settings', 'Test message'));
 

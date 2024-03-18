@@ -23,6 +23,7 @@ return [
     'Download ICS' => 'Descarregar ICS',
     'Edit' => 'Editar',
     'Edit Event' => 'Editar Evento',
+    'Email' => 'Email',
     'Enable' => 'Ativar',
     'Enable Reminder' => 'Ativar Lembrete',
     'End Date' => 'Data de Término',
@@ -75,7 +76,7 @@ return [
     '{displayName} just added you to event "{contentTitle}" in space {spaceName} starting at {time}.' => '{displayName} adicionou-te ao evento "{contentTitle}" no espaço {spaceName} com início às {time}.',
     '{displayName} just invited you to event "{contentTitle}" in space {spaceName} starting at {time}.' => '{displayName} convidou-te para o evento "{contentTitle}" no espaço {spaceName} que terá início às {time}.',
     'Add all Space members with status {status}' => '',
-    'Email' => '',
+    'Before a target calendar can be selected, the module must be activated in at least one Space.' => '',
     'Export as {type}' => '',
     'Filter by types' => '',
     'Participation Status' => '',
@@ -83,4 +84,6 @@ return [
     'Status cannot be updated.' => '',
     'The event has already ended.' => '',
     'global' => '',
+    '{displayName} just added you to event "{contentTitle}".' => '',
+    '{displayName} just invited you to event "{contentTitle}".' => '',
 ];

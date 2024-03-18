@@ -1,0 +1,6 @@
+.analytics-chart-loader {
+  display: block;
+  width: 100%;
+  height: 350px; /** Should be equal to ApexChartsHelper -> 'height' **/
+  background: url(../img/lazy-loader.gif) center center no-repeat rgba(255, 255, 255, 0.6);
+}

@@ -210,7 +210,7 @@ class AccountController extends BaseAccountController
                     'class' => 'btn btn-primary'
                     ],
             ];
-            Yii::debug(VarDumper::dumpAsString($definition, 10, true), 'edub');
+            //Yii::debug(VarDumper::dumpAsString($definition, 10, true), 'edub');
             $session['backPage'] = true; 
             
             switch ($fieldID) {

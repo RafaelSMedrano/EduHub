@@ -2,6 +2,7 @@
 
 return [
     'Edit' => 'Editatu',
+    'Enable' => 'Aktibatu',
     'Files' => 'Fitxategiak',
     'Next' => 'Hurrengoa',
     'Time Zone' => 'Ordu-eremua',
@@ -18,6 +19,7 @@ return [
     'Allow option \'Decline\'' => '',
     'Allow option \'Undecided\'' => '',
     'Attending' => '',
+    'Before a target calendar can be selected, the module must be activated in at least one Space.' => '',
     'Birthday' => '',
     'Calendar' => '',
     'Cancel Event' => '',
@@ -28,7 +30,6 @@ return [
     'Download ICS' => '',
     'Edit Event' => '',
     'Email' => '',
-    'Enable' => '',
     'Enable Reminder' => '',
     'End Date' => '',
     'End Time' => '',
@@ -82,5 +83,7 @@ return [
     'global' => '',
     '{displayName} Birthday' => '',
     '{displayName} just added you to event "{contentTitle}" in space {spaceName} starting at {time}.' => '',
+    '{displayName} just added you to event "{contentTitle}".' => '',
     '{displayName} just invited you to event "{contentTitle}" in space {spaceName} starting at {time}.' => '',
+    '{displayName} just invited you to event "{contentTitle}".' => '',
 ];
