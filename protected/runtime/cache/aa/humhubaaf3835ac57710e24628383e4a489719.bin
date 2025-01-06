@@ -1,0 +1,19 @@
+a:2:{i:0;s:1533:"
+
+
+    <div class="media">
+                    <!-- Show user image -->
+            <span class="pull-left has-online-status img-size-medium"><img class="media-object img-rounded" src="/uploads/profile_image/14a96f4d-e624-4286-b407-7ee645460992.jpg?m=1709662926" width="32" alt="Foto de perfil de Paulo Henrique Mascarenhas" style="width: 32px; height: 32px" data-contentcontainer-id="210"><span class="tt user-online-status user-is-offline" title="Offline"></span></span>        
+        <!-- Show space image, if you are outside from a space -->
+                                    <div class="img-space pull-left space-profile-acronym-10 space-acronym hidden" style=" background-color: #e27d09; width: 20px; height: 20px; font-size: 8.8px; padding: 3.6px 0; border-radius: 2px;" data-contentcontainer-id="218">AD</div><img class="img-space pull-left space-profile-image-10 img-rounded profile-user-photo" src="/uploads/profile_image/2822c31d-218f-41d4-a34b-c564b08dfbf1.jpg?m=1709662926" alt="Ajuda do Ecossistema (Tecnologia)" style=" width: 20px; height: 20px" data-contentcontainer-id="218">            
+        
+        <div class="media-body text-break">
+
+            <!-- Show content -->
+            <strong>Paulo Henrique Mascarenhas</strong> criou o novo espaço <strong>Ajuda do Ecossistema (Tec...</strong>            <br>
+
+            <!-- show time -->
+            <time class="tt time timeago" datetime="2024-02-07T13:17:08-03:00" title="7 de fev. de 2024 - 13:17">7 de fev. de 2024</time>        </div>
+    </div>
+
+";i:1;N;}

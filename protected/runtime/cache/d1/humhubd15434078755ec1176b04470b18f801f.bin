@@ -1,0 +1,14 @@
+a:2:{i:0;a:5:{s:20:"enableEmailGoService";s:1:"1";s:8:"senderId";s:12:"797133602645";s:4:"json";s:2389:"{
+  "type": "service_account",
+  "project_id": "eduhub-81281",
+  "private_key_id": "10c8e11bd1e6d8c36e198ae3cfb9a70027c7e76f",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC41shAdkC0had3\n9F5oRDwtxq6gvnjj8fdH+VZ69fbjJI6Kmt8I0+cWhbLbh7Kf4zL9/H+Ik6hNkPjs\nz/lJysZEmnMKzF2cM2KIXOR2ffih8epMQe+x0lO4QrTWa1quubnZu5SraDXzA3ZX\ncqn36GlOokA6rTngcIm5to1HsrWxkQfUpjFKVFgW5kkXscIl1ee/1AYvG9GLwLT4\n3yiqYBcZl5N4dTfQvbHCkYoqQ+nyxTy0qWOl7N3VF5LmoY8IIpeaYee8Pn7SCjy1\nunBEU1QdF1JB6coDnz6cOd3TAaBBh5zu8D6YSX465+WVH763c9MZR2M+DS3Y8nEr\na4HDibVJAgMBAAECggEAM7s5FIGEHoIBmtrzyS6/wPgIS8jDQNipoqUwBP3t+Sh0\nFGq/3VKhLHaC1lomLgWCcf9HGkxpIDxgzrZuSK7NysmHRRBpapwfCZcmAdvDyF9S\necFCenwpHjrdLd2h5aDpWPzc4RQrdTYU2uimlVGgl3dljoaI2j3k7esfo19q5qT8\nzfvULHTn5xToJMhDhPbOK44GTl0veZKUuOgyWgyqUZki4U+BVVO/QcHKcBvAQT7I\nKhZGlMj52stSObQE/IfGHHgCe4gdcVVjg2ak/btJQIWVSdXWbFrwOuajyOoyedgv\nbNT398eudMcMcq6LCmiVlS4ZA5ueBb/jZnty3uIN+QKBgQDbLJddXNOSAjI9K29d\nT5t/bKuuYLR6ZEJorWdkfRpHYFZL7UxXDYBViWN78tx9CIEtuuR9D5PP5VfTNaYm\nfcV8bY3ufREnoy5Lm+el4wOiqG3afVXXfQIyIMPo89WrY8uz4Xa4qqWB5LnNbOTM\ne5aDOfmhxiAehjQf8N3wqcU3FwKBgQDX5VIK8UGgiV9zJ0q8agAw2sLu3y/nxDro\nyctLqxhctsc7gaK2xK0Xlu29IJ+chcnjBtrN0A1tIHFS7H3QNKgofJrR+mNzzXu1\nzOPXL/u2wxbBDOpdoSQIdwKiR7zzYtjW7BV+8Hb8IoScY9AfeCLfvqYSuv6moFiG\nymkJS0YynwKBgQDBMGnvYo4eyg7Meke8YRo4VGpz10veAhfDOu3C1r7eIV2PqYg7\nx2vSebqWG7kcAO4UiAM09REeFBK42jYtAXmctth/WgBQBvccsDycrSCcNIg4KXgL\n7GWOF/F3mc5CN0HruZWzKr+eYiUgnJaEY3+FBgoy/Xd8UGELsn1+z7ZFWwKBgFuI\nxLIS+6oe1DM0c4FSx+XuujsgsWToU7mi5OieD+QvMmVOXzhyRpj7yqwnCsUIDEKP\nA3HDRg4AdUudLPJ7gNg5jEJ+kG/mrQ61Ydw4YdZo/Fq5KRytV2OnYZyAIeJnBFyL\nF8oMFcZstCDCSNkuzEpkwHCsi48F6MKtSr9ABPEtAoGAOi1qDRVb77hZG3YppTGs\nOya2J3uE9POo+V4bWfCb7VlgVP9FEfUtBYwMVq6PUAIL+Q47fqQNt+TdhxwPdQAH\ntpSUOSNPcCO8VtyFHdeuuwJeBkMMixkNnp/02ghTMHNR1VwhRA2Il0jN1dGgcR9/\nNNGIgo+7k9MVfaDOewno/wA=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-tzv6x@eduhub-81281.iam.gserviceaccount.com",
+  "client_id": "102560298889924374805",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-tzv6x%40eduhub-81281.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
+";s:12:"humhubApiKey";s:0:"";s:21:"disableAuthChoicesIos";s:1:"0";}i:1;N;}

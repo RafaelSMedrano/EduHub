@@ -22,7 +22,7 @@
                                     <!-- start content top-->
                                     <tr>
                                         <td valign="top" align="left">
-                                            <?=  $content ?>
+                                            <?=  $content ?> <!-- esse é efetivamente o corpo da notificação-->
                                         </td>
                                     </tr>
                                     <!--start space height -->

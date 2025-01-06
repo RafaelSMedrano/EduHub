@@ -1,0 +1,1 @@
+a:2:{i:0;a:7:{s:13:"enableJwtAuth";s:1:"0";s:15:"enableBasicAuth";s:1:"1";s:16:"enableBearerAuth";s:1:"1";s:20:"enableQueryParamAuth";s:1:"0";s:18:"enabledForAllUsers";s:1:"0";s:12:"enabledUsers";s:4:"[""]";s:10:"apiModules";s:29:"{"mail":true,"calendar":true}";}i:1;N;}

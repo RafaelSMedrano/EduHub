@@ -14,5 +14,9 @@ return [
             			'password' => 'edub@@',
             			'charset' => 'utf8',
         		],
+			'urlManager' => [
+					'showScriptName' => false,
+					'enablePrettyUrl' => true,
+				],
 			],
 ];

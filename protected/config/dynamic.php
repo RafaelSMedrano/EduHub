@@ -1,6 +1,6 @@
 <?php return array (
   'name' => 'EduHub',
-  'language' => 'pt-BR',
+  'language' => 'en-US',
   'components' => 
   array (
     'user' => 
@@ -10,7 +10,11 @@
     array (
       'transport' => 
       array (
-        'dsn' => 'native://default',
+        'host' => 'email-smtp.us-east-1.amazonaws.com',
+        'port' => 465,
+        'username' => 'AKIA5QCWI5XNA7IGUPVG',
+        'password' => 'BHIjYMEzzGlqrudhuvTp9oM8Gd7zHl0XsRDeGV/jmWkx',
+        'scheme' => 'smtps',
       ),
     ),
     'cache' => 
@@ -25,7 +29,7 @@
   ),
   'params' => 
   array (
-    'config_created_at' => 1704652052,
+    'config_created_at' => 1713659081,
     'horImageScrollOnMobile' => 1,
     'databaseInstalled' => true,
     'installed' => true,

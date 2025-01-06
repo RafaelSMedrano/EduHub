@@ -179,7 +179,7 @@ class SettingController extends Controller
      * E-Mail Mailing Settings
      */
     public function actionMailingServer()
-    {   Yii::debug(VarDumper::dumpAsString('teste', 3, true), 'RastreandoNoMailerTest');
+    {   
         $form = new MailingSettingsForm;
         Yii::debug(VarDumper::dumpAsString('teste', 3, true), 'RastreandoNoMailerTest');
         if ($form->load(Yii::$app->request->post()) && $form->validate() && $form->save()) {

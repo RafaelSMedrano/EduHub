@@ -39,6 +39,7 @@ use yii\base\Exception;
 use yii\base\InvalidArgumentException;
 use yii\db\IntegrityException;
 use yii\helpers\Url;
+use yii\helpers\VarDumper;
 
 /**
  * This is the model class for table "content". The content model serves as relation between a [[ContentContainer]] and
@@ -293,6 +294,7 @@ class Content extends ActiveRecord implements Movable, ContentOwner, SoftDeletab
         // TODO: handle ContentCreated notifications and live events for global content
 
         if (!$this->isMuted()) {
+            Yii::debug('rastreandoNoContent');
             $this->notifyContentCreated();
         }
 
@@ -329,7 +331,7 @@ class Content extends ActiveRecord implements Movable, ContentOwner, SoftDeletab
     private function notifyContentCreated()
     {
         $contentSource = $this->getPolymorphicRelation();
-
+        
         $userQuery = Yii::$app->notification->getFollowers($this);
         if (count($this->notifyUsersOfNewContent) != 0) {
             // Add manually notified users

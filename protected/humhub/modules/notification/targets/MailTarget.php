@@ -11,6 +11,7 @@ namespace humhub\modules\notification\targets;
 use Yii;
 use humhub\modules\notification\components\BaseNotification;
 use humhub\modules\user\models\User;
+use yii\helpers\VarDumper;
 
 /**
  *
@@ -66,7 +67,7 @@ class MailTarget extends BaseTarget
                     'content' => $renderer->render($notification),
                     'content_plaintext' => $renderer->renderText($notification)
                         ], $notification->getViewParams());
-
+                        Yii::debug('rastreandoNoContentForm', VarDumper::dumpAsString($viewParams, 2, false));
         $mail = Yii::$app->mailer->compose($this->view, $viewParams)
                 ->setFrom([Yii::$app->settings->get('mailer.systemEmailAddress') => Yii::$app->settings->get('mailer.systemEmailName')])
                 ->setTo($recipient->email)

@@ -1,0 +1,21 @@
+a:2:{i:0;s:1605:"
+
+<a href="/index.php?r=activity%2Flink&id=601">
+
+    <div class="media">
+                    <!-- Show user image -->
+            <span class="pull-left has-online-status img-size-medium"><img class="media-object img-rounded" src="/uploads/profile_image/bc9babe9-7ed9-40f3-b9c1-0505493d098f.jpg?m=1713029904" width="32" alt="Foto de perfil de David Soares" style="width: 32px; height: 32px" data-contentcontainer-id="230"><span class="tt user-online-status user-is-offline" title="Offline"></span></span>        
+        <!-- Show space image, if you are outside from a space -->
+                                    <div class="img-space pull-left space-profile-acronym-10 space-acronym hidden" style=" background-color: #e27d09; width: 20px; height: 20px; font-size: 8.8px; padding: 3.6px 0; border-radius: 2px;" data-contentcontainer-id="218">AD</div><img class="img-space pull-left space-profile-image-10 img-rounded profile-user-photo" src="/uploads/profile_image/2822c31d-218f-41d4-a34b-c564b08dfbf1.jpg?m=1709662926" alt="Ajuda do Ecossistema (Tecnologia)" style=" width: 20px; height: 20px" data-contentcontainer-id="218">            
+        
+        <div class="media-body text-break">
+
+            <!-- Show content -->
+            <strong>David Soares</strong> curtiu post "Fala pessoal, estamos construindo uma healthtech para preven..."            <br>
+
+            <!-- show time -->
+            <time class="tt time timeago" data-ui-addition="timeago" datetime="2024-04-22T20:28:18-03:00" title="22 de abr. de 2024 - 23:28">22 de abr. de 2024 - 23:28</time>        </div>
+    </div>
+
+</a>
+";i:1;N;}

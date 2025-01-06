@@ -2,9 +2,9 @@
 return array (
   '<strong>Account</strong> Settings' => '',
   '<strong>Confirm</strong></strong> your new email address' => '',
-  '<strong>Permissions</strong>' => '',
-  '<strong>Your</strong> Account' => '',
-  '<strong>Your</strong> profile' => '',
+  '<strong>Permissions</strong>' => 'Permissões',
+  '<strong>Your</strong> Account' => '<strong>Sua</strong> Conta',
+  '<strong>Your</strong> profile' => '<strong>Seu</strong> Perfil',
   'Add tags to your profile describing you and highlighting your skills and interests. Your tags will be displayed in your profile and in the \'People\' directory.' => '',
   'All your personal data will be irrevocably deleted.' => '',
   'Are you sure that you want to delete your account?' => '',

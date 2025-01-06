@@ -44,6 +44,10 @@ $this->pageTitle = Yii::t('UserModule.account', 'Create Your EduHub profile');
                     
                       
                     <?= $hForm->render($form) ?>
+                    <?php if($optionsSended['fieldID'] == 34) {
+                            echo 'Ao salvar você concorda com nossas <a href="https://eduhub.com.br/index.php?r=user%2Flegal%2Fprivacy-policy">políticas de privacidade</a> e nossos <a href="url_dos_termos_de_uso">termos de uso</a>.';
+                        }
+                    ?>    
                 <?php ActiveForm::end(); ?>
                 
                 

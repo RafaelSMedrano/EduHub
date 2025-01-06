@@ -288,6 +288,7 @@ class AccountController extends BaseAccountController
                     $options=[];
             }            
         }
+        $options['fieldID'] = $fieldID;
         $session['formDefinition'] = $definition;
         $form = new HForm($definition, $user->profile);        
         $form->showErrorSummary = true;

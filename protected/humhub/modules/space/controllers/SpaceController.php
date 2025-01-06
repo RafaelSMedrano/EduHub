@@ -31,7 +31,7 @@ use yii\db\Expression;
  *
  * @author Luke teste
  * @package humhub.modules_core.space.controllers
- * @since 0.5 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
+ * @since 0.5 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
  */
 class SpaceController extends ContentContainerController
 {
